@@ -4,7 +4,6 @@ const { Link } = ReactRouterDOM
 
 //js
 import { mailService } from "../services/mail.service.js"
-
 //jsx
 import { MailCompose } from "../cmps/mail-compose.jsx"
 // import { MailSideFiler } from "../cmps/mail-side-filter.jsx"
@@ -35,8 +34,7 @@ export function MailDetails() {
     }
 
     if (!mail) return <h1>Loading....</h1>
-    return <div>
-        <h1>hi from mail details</h1>
+    return <main className="mail-details-container">
         {/* <MailTopFilter/> */}
         {/* <MailSideFiler/> */}
         <h4>{mailService.getDate(mail.sentAt)}</h4>
@@ -45,5 +43,5 @@ export function MailDetails() {
         <button onClick={() => onMoveToTrash(mail)}>Move to trash</button>
         <Link to='/mail/'>To all Emails</Link>
         {isComposeOpen && <MailCompose />}
-    </div>
+    </main>
 }

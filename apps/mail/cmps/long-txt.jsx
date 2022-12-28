@@ -8,9 +8,9 @@ export function LongTxt({ txt, length }) {
         return (txt.length < length || isShowMore) ? txt : txt.substring(0, length + 1) + '...'
     }
 
-    function onToggleLongTxt() {
-        setShowMore(prevLongTxtShown => !prevLongTxtShown)
-    }
+    // function onToggleLongTxt() {
+    //     setShowMore(prevLongTxtShown => !prevLongTxtShown)
+    // }
 
     return <article className="long-txt">
         <p>

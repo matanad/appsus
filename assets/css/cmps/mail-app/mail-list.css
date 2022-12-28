@@ -1,9 +1,6 @@
-.mail-list{
-    background-color: rgb(241, 144, 16);
-}
-
-.mail-list-table{
+.mail-table{
     width: 100%;
+    border-spacing: 0px;
 }
 
 .trans-btn {
@@ -14,3 +11,44 @@
 .mail-date{
     width: 8%;
 }
+
+.mail-list-item{
+    box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+    background-color: var(--gray1);
+}
+
+.mail-list-item.mail-is-read{
+    background-color: rgba(74, 72, 72, 0.622);
+}
+
+.mail-list-item a{
+    margin: 0;
+    padding: 10px;
+}
+.mail-list-item p{
+    margin: 0;
+    padding: 0 0.5rem;
+}
+
+
+/* ////////////////////////////////////// */
+/* /////////////MAIL DETAILS///////////////// */
+.mail-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mail-top-filter{
+    background-color: rgb(179, 192, 192);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+
+}
+
+.new-mail-container{
+    background-color: rgb(188, 124, 27);
+}
+

@@ -25,21 +25,22 @@ export function MailIndex() {
         })
     }
 
-    function onNewMail(){
+    function onNewMail() {
         setIsComposeOpen(!isComposeOpen)
     }
 
 
 
     return <main className='mail-index'>
-        <h1>Hellow From Mail INDEX</h1>
-            <button onClick={onNewMail}>New Mail</button>
+        <section className="new-mail-container">
+        <button onClick={onNewMail}>New Mail</button>
+        {isComposeOpen && <MailCompose setIsComposeOpen={setIsComposeOpen} />}
+        </section>
 
-            <MailList mails={mails} />
+        <MailList mails={mails} />
 
 
 
-        {isComposeOpen && <MailCompose setIsComposeOpen={setIsComposeOpen}/>}
     </main>
 }
 

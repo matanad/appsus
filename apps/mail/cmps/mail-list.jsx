@@ -1,5 +1,13 @@
+import { MailPreview } from "./mail-preview.jsx"
+
 export function MailList() {
 
-    return <div>Mail list</div>
+    return <section className="mail-list">
+
+        {/* <Link to='mail/details/**mailId**'> */}
+            <MailPreview />
+        {/* </Link> */}
+
+    </section>
 
 }

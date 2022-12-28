@@ -22,3 +22,8 @@ img {
     width: 100%;
     object-fit: cover;
 }
+
+button{
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.54);
+}

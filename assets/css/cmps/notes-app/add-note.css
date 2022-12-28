@@ -4,6 +4,7 @@
     padding: 1em 2em;
     margin: 1em 0;
     max-width: 598px;
+    border-radius: 8px;
 }
 
 .add-note input{

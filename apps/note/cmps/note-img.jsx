@@ -1,4 +1,4 @@
-export function NoteImg(){
+export function NoteImg({note}){
 
-    return <div>Note img</div>
+    return <img src={note.info.url} alt={note.info.title} />
 }

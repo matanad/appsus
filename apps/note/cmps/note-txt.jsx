@@ -1,4 +1,4 @@
-export function NoteTxt(){
+export function NoteTxt({ note }) {
 
-    return <div>Note Txt</div>
+    return <p>{note.info.txt}</p>
 }

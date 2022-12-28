@@ -1,0 +1,20 @@
+.note{
+    background-color: var(--red);
+    max-width: 430px;
+    padding: 1em 2em;
+    margin-bottom: 1em;
+}
+
+.note:hover .btn-controls>*{
+        opacity: 1;
+}
+
+.note button{
+    background-color: transparent;
+    border: none;
+}
+
+.note .btn-controls>*{
+    opacity: 0;
+    transition: opacity .3s;
+}

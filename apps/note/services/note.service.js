@@ -16,10 +16,12 @@ const gNotes = [
         id: "n101",
         type: "note-txt",
         isPinned: true,
+        color: '',
         info: { txt: "Fullstack Me Baby!" }
     },
     {
         id: "n102", type: "note-img",
+        color: '',
         info: {
             url: "https://scontent.ftlv5-1.fna.fbcdn.net/v/t1.6435-9/44951172_1950721595222915_1800732169186836480_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=J2Ja2HgwKl0AX-xMLrv&_nc_ht=scontent.ftlv5-1.fna&oh=00_AfAY7BgEn1r2ay_RpFii0xR1_geuw0fxfCQs7zLGbnsvAA&oe=63D3B821",
             title: "Bobi and Me"
@@ -29,6 +31,7 @@ const gNotes = [
     {
         id: "n103",
         type: "note-todos",
+        color: '',
         info: {
             label: "Get my stuff together",
             todos: [{
@@ -66,12 +69,12 @@ function save(note) {
     }
 }
 
-function getEmptyNote(type = '', info = { txt: '' }) {
-    return { type, info }
+function getEmptyNote(type = '', info = { txt: '' }, color = '') {
+    return { type, info, color }
 }
 
-function getEmptyTodo(type = '', info = { label: '', todos: [] }) {
-    return { type, info }
+function getEmptyTodo(type = '', info = { label: '', todos: [] }, color = '') {
+    return { type, info, color }
 }
 
 function _saveNotesToStorage(notes) {

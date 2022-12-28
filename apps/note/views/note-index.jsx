@@ -1,6 +1,7 @@
 const { useState, useEffect } = React
 
 import { AddNote } from "../cmps/add-note.jsx"
+import { NoteList } from "../cmps/note-list.jsx"
 import { NotePreview } from "../cmps/note-preview.jsx"
 
 import { noteService } from "../services/note.service.js"
@@ -27,16 +28,12 @@ export function NoteIndex() {
             .then(loadNotes)
     }
 
-    return <div className="container">
+    return <div className="note-app">
         <header>
-            <AddNote onAddNewNote={onAddNewNote}/>
+            <AddNote onAddNewNote={onAddNewNote} />
         </header>
-        <main>
-            {notes.map(note => <NotePreview
-                key={note.id}
-                note={note}
-                onDeleteNote={onDeleteNote}
-            />)}
+        <main className="note-list">
+            <NoteList notes={notes} onDeleteNote={onDeleteNote} saveNote={onAddNewNote}/>
         </main>
     </div>
 

@@ -1,8 +1,11 @@
 .note {
     background-color: var(--red);
-    max-width: 430px;
+    max-width: 240px;
+    width: 100%;
     padding: 1em 2em;
     margin-bottom: 1em;
+    border-radius: 8px;
+    transition: background-color .5s;
 }
 
 .note .note-header {
@@ -26,4 +29,41 @@
 .note .btn-controls>* {
     opacity: 0;
     transition: opacity .3s;
+}
+
+.btns-color-container {
+    background-color: black;
+    border-radius: 8px;
+}
+
+.btns-color-container .btn-yellow {
+    color: var(--yellow);
+}
+
+.btns-color-container .btn-blue {
+    color: var(--blue);
+}
+
+.btns-color-container .btn-red {
+    color: var(--red);
+}
+
+.btns-color-container .btn-purple {
+    color: var(--purple);
+}
+
+.yellow {
+    background-color: var(--yellow);
+}
+
+.blue {
+    background-color: var(--blue);
+}
+
+.red {
+    background-color: var(--red);
+}
+
+.purple{
+    background-color: var(--purple);
 }

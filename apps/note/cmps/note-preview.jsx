@@ -11,6 +11,7 @@ export function NotePreview({ note, onDeleteNote }) {
                     delete
                 </span>
             </button>
+            <button></button>
         </div>
     </article>
 }

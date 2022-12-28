@@ -13,6 +13,32 @@ export const mailService = {
   setIsTrash,
   getDate,
   getEmptyMail,
+  getDefaultFilter,
+  queryWithFilter,
+}
+
+function queryWithFilter(filterBy = getDefaultFilter()) {
+  return storageService.query(MAIL_KEY)
+      .then(mails => {
+          if (filterBy.txt) {
+              const regex = new RegExp(filterBy.txt, 'i')
+              mails = mails.filter(mail => regex.test(mail.subject))
+          }
+          if (filterBy.byIsRead) {
+              mails = mails.filter(mail => mail.isRead)
+          }
+          if (filterBy.byIsNotRead) {
+              mails = mails.filter(mail => !mail.isRead)
+          }
+          // if (filterBy.minYear) {
+          //     mails = mails.filter(mail => filterBy.minYear >= utilService.getYearsDistance(mail.publishedDate))
+          // }
+          return mails
+      })
+}
+
+function getDefaultFilter() {
+  return { byIsRead: false, byIsNotRead: false, txt: '' }
 }
 
 function getEmptyMail(to = '', subject = '', body = '') {
@@ -26,10 +52,6 @@ function getEmptyMail(to = '', subject = '', body = '') {
     isTrash: false,
     folder: ['new'],
   }
-}
-
-function getEmptyNote(type = '', info = { txt: '' }) {
-  return { type, info }
 }
 
 function getDate(timestamp) {

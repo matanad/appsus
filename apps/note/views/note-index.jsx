@@ -1,6 +1,8 @@
 const { useState, useEffect } = React
 
+import { AddNote } from "../cmps/add-note.jsx"
 import { NotePreview } from "../cmps/note-preview.jsx"
+
 import { noteService } from "../services/note.service.js"
 
 export function NoteIndex() {
@@ -17,15 +19,26 @@ export function NoteIndex() {
 
     function onDeleteNote(noteId) {
         noteService.remove(noteId)
-        .then(loadNotes)
+            .then(loadNotes)
     }
 
-    return <main>
-        <div>note app</div>
-        {notes.map(note => <NotePreview 
-        key={note.id}
-        note={note} 
-        onDeleteNote={onDeleteNote}
-        />)}
-    </main>
+    function onAddNewNote(note) {
+        noteService.save(note)
+            .then(loadNotes)
+    }
+
+    return <div className="container">
+        <header>
+            <AddNote onAddNewNote={onAddNewNote}/>
+        </header>
+        <main>
+            {notes.map(note => <NotePreview
+                key={note.id}
+                note={note}
+                onDeleteNote={onDeleteNote}
+            />)}
+        </main>
+    </div>
+
+
 }

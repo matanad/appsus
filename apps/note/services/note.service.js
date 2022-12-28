@@ -7,6 +7,7 @@ export const noteService = {
     remove,
     save,
     getEmptyNote,
+    getEmptyTodo
 }
 
 const STORAGE_KEY = 'noteDB'
@@ -59,13 +60,17 @@ function remove(noteId) {
 
 function save(note) {
     if (note.id) {
-        return asyncStorageService.put(STORAGE_KEY, note)
+        return storageService.put(STORAGE_KEY, note)
     } else {
-        return asyncStorageService.post(STORAGE_KEY, note)
+        return storageService.post(STORAGE_KEY, note)
     }
 }
 
 function getEmptyNote(type = '', info = { txt: '' }) {
+    return { type, info }
+}
+
+function getEmptyTodo(type = '', info = { label: '', todos: [] }) {
     return { type, info }
 }
 

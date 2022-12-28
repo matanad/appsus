@@ -1,12 +1,18 @@
-export function NoteTodos({ note }) {
+const { Fragment } = React
 
-    return <div>
+export function NoteTodos({ note }) {
+    const { todos, label } = note.info
+
+    return <Fragment>
+        <header className="note-header">
+            <h1>{label}</h1>
+        </header>
         {
-            note.info.todos.map((todo =>
+            todos.map((todo =>
                 <p key={note.id + todo.txt}>
                     {todo.txt}
                 </p>
             ))
         }
-    </div>
+    </Fragment>
 }

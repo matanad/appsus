@@ -1,6 +1,6 @@
 
-import { utilService } from '../services/utilService.js'
-import { storageService } from '../services/async-storage.service.js'
+import { utilService } from '../../../services/util.service.js'
+import { storageService } from '../../../services/async-storage.service.js'
 
 const MAIL_KEY = 'mailDB'
 _createMails()
@@ -10,12 +10,27 @@ export const mailService = {
   get,
   remove,
   save,
-//   getEmptyBook,
-//   getDefaultFilter,
-  addReview,
-  getNextBookId,
-  getPrevBookId,
+  setIsTrash,
+  getDate,
+}
 
+function getDate(timestamp) {
+  // Create a new JavaScript Date object based on the timestamp
+  // multiplied by 1000 so that the argument is in milliseconds, not seconds
+  var date = new Date(timestamp);
+
+  // Get the year, month, and day from the date object
+  var year = date.getFullYear();
+  var month = date.getMonth() + 1; // Jan is 0, dec is 11
+  var day = date.getDate();
+
+  // Return the formatted date string
+  return month + '/' + day + '/' + year;
+}
+
+function setIsTrash(mail){
+  mail.isTrash = true
+  storageService.put(MAIL_KEY, mail)
 }
 
 function _createMails() {
@@ -27,24 +42,30 @@ function _createMails() {
                 subject: 'Miss you!',
                 body: 'Would love to catch up sometimes',
                 isRead: false,
-                sentAt : 1551133930594,
-                to: 'momo@momo.com'
+                sentAt : 1609459200,
+                to: 'momo@momo.com',
+                isTrash: false,
+                folder: ['new', 'important',],
             },
             {
                 id: 'e102',
                 subject: 'Hi there',
                 body: 'how are toy doing?',
                 isRead: false,
-                sentAt : 1551133930594,
-                to: 'momo@momo.com'
+                sentAt : new Date(Date.now()),
+                to: 'momo@momo.com',
+                isTrash: false,
+                folder: ['new', 'important',],
             },
             {
                 id: 'e103',
                 subject: 'fix the door',
                 body: 'you need to fix it',
                 isRead: false,
-                sentAt : 1551133930594,
-                to: 'momo@momo.com'
+                sentAt : 1672233833003,
+                to: 'momo@momo.com',
+                isTrash: false,
+                folder: ['new', 'important',],
             },
         ] 
 
@@ -52,64 +73,25 @@ function _createMails() {
     }
   }
 
-
-function query(filterBy = getDefaultFilter()) {
+function query() {
   return storageService.query(MAIL_KEY)
-    .then(books => {
-      if (filterBy.title) {
-        const regex = new RegExp(filterBy.title, 'i')
-        books = books.filter(book => regex.test(book.title))
-      }
-      if (filterBy.price) {
-        books = books.filter(book => book.listPrice.amount >= filterBy.price)
-      }
-      return books
-    })
 }
 
-function getNextBookId(bookId) {
-  return storageService.query(MAIL_KEY)
-      .then(books => {
-          var idx = books.findIndex(book => book.id === bookId)
-          if (idx === books.length - 1) idx = -1
-          return books[idx + 1].id
-      })
+function get(mailId) {
+  return storageService.get(MAIL_KEY, mailId)
 }
 
-function getPrevBookId(bookId) {
-  return storageService.query(MAIL_KEY)
-      .then(books => {
-          var idx = books.findIndex(book => book.id === bookId)
-          if (idx === 0) idx = books.length
-          return books[idx - 1].id
-      })
+function remove(mailId) {
+  return storageService.remove(MAIL_KEY, mailId)
 }
 
-function get(bookId) {
-  return storageService.get(MAIL_KEY, bookId)
-}
-
-function remove(bookId) {
-  return storageService.remove(MAIL_KEY, bookId)
-}
-
-function save(book) {
-  if (book.id) { 
-    return storageService.put(MAIL_KEY, book)
+function save(mail) {
+  if (mail.id) { 
+    return storageService.put(MAIL_KEY, mail)
   } else {
-    return storageService.post(MAIL_KEY, book)
+    return storageService.post(MAIL_KEY, mail)
   }
 }
-
-
-
-// function getEmptyBook(title = '', price = '') {
-//   return { id: '', title, price }
-// }
-
-// function getDefaultFilter() {
-//   return { title: '', price: '' }
-// }
 
 
 

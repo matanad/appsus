@@ -2,10 +2,30 @@ export const utilService = {
     makeId,
     makeLorem,
     getRandomIntInclusive,
+    loadFromStorage,
+    saveToStorage,
     getRandomColor,
     padNum,
     getDayName,
     getMonthName,
+    debounce,
+}
+
+function saveToStorage(key, value) {
+    localStorage.setItem(key, JSON.stringify(value))
+}
+
+function loadFromStorage(key) {
+    const data = localStorage.getItem(key)
+    return (data) ? JSON.parse(data) : undefined
+}
+
+function debounce(func, timeout = 500){
+    let timer
+    return (...args) => {
+      clearTimeout(timer)
+      timer = setTimeout(() => { func.apply(this, args) }, timeout)
+    }
 }
 
 function makeId(length = 6) {

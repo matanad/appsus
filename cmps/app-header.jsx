@@ -6,7 +6,7 @@ export function AppHeader() {
         <Link to="/">
             <h3>LOGO!</h3>
         </Link>
-        <input placeHolder="Search Here"/>
+        <input placeholder="Search Here"/>
         <nav>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About</NavLink>

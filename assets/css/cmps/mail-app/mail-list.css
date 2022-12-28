@@ -1,0 +1,16 @@
+.mail-list{
+    background-color: rgb(241, 144, 16);
+}
+
+.mail-list-table{
+    width: 100%;
+}
+
+.trans-btn {
+    background-color: transparent;
+    border: none;
+}
+
+.mail-date{
+    width: 8%;
+}

@@ -12,6 +12,24 @@ export const mailService = {
   save,
   setIsTrash,
   getDate,
+  getEmptyMail,
+}
+
+function getEmptyMail(to = '', subject = '', body = '') {
+  return {
+    subject: '',
+    body: '',
+    isRead: false,
+    sentAt: Date.now(),
+    to: '',
+    from: '',
+    isTrash: false,
+    folder: ['new'],
+  }
+}
+
+function getEmptyNote(type = '', info = { txt: '' }) {
+  return { type, info }
 }
 
 function getDate(timestamp) {
@@ -28,50 +46,53 @@ function getDate(timestamp) {
   return month + '/' + day + '/' + year;
 }
 
-function setIsTrash(mail){
+function setIsTrash(mail) {
   mail.isTrash = true
   storageService.put(MAIL_KEY, mail)
 }
 
 function _createMails() {
-    let mails = utilService.loadFromStorage(MAIL_KEY)
-    if (!mails || !mails.length) {
-        mails = [
-            {
-                id: 'e101',
-                subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
-                isRead: false,
-                sentAt : 1609459200,
-                to: 'momo@momo.com',
-                isTrash: false,
-                folder: ['new', 'important',],
-            },
-            {
-                id: 'e102',
-                subject: 'Hi there',
-                body: 'how are toy doing?',
-                isRead: false,
-                sentAt : new Date(Date.now()),
-                to: 'momo@momo.com',
-                isTrash: false,
-                folder: ['new', 'important',],
-            },
-            {
-                id: 'e103',
-                subject: 'fix the door',
-                body: 'you need to fix it',
-                isRead: false,
-                sentAt : 1672233833003,
-                to: 'momo@momo.com',
-                isTrash: false,
-                folder: ['new', 'important',],
-            },
-        ] 
+  let mails = utilService.loadFromStorage(MAIL_KEY)
+  if (!mails || !mails.length) {
+    mails = [
+      {
+        id: 'e101',
+        subject: 'Miss you!',
+        body: 'Would love to catch up sometimes',
+        isRead: false,
+        sentAt: 1609459200,
+        to: 'momo@momo.com',
+        from: 'Wix',
+        isTrash: false,
+        folder: ['new', 'important',],
+      },
+      {
+        id: 'e102',
+        subject: 'Hi there',
+        body: 'how are toy doing?',
+        isRead: false,
+        sentAt: new Date(Date.now()),
+        to: 'momo@momo.com',
+        from: 'Dana',
+        isTrash: false,
+        folder: ['new', 'important',],
+      },
+      {
+        id: 'e103',
+        subject: 'fix the door',
+        body: 'you need to fix it',
+        isRead: false,
+        sentAt: 1672233833003,
+        to: 'momo@momo.com',
+        from: 'Matan',
+        isTrash: false,
+        folder: ['new', 'important',],
+      },
+    ]
 
-      utilService.saveToStorage(MAIL_KEY, mails)
-    }
+    utilService.saveToStorage(MAIL_KEY, mails)
   }
+}
 
 function query() {
   return storageService.query(MAIL_KEY)
@@ -86,7 +107,7 @@ function remove(mailId) {
 }
 
 function save(mail) {
-  if (mail.id) { 
+  if (mail.id) {
     return storageService.put(MAIL_KEY, mail)
   } else {
     return storageService.post(MAIL_KEY, mail)

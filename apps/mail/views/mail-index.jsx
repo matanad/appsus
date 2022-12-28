@@ -15,7 +15,7 @@ export function MailIndex() {
     useEffect(() => {
         // setIsLoading(true)
         loadMails()
-    }, [])
+    }, [isComposeOpen])
 
     function loadMails() {
         mailService.query().then(mailsToSet => {
@@ -39,7 +39,7 @@ export function MailIndex() {
 
 
 
-        {isComposeOpen && <MailCompose/>}
+        {isComposeOpen && <MailCompose setIsComposeOpen={setIsComposeOpen}/>}
     </main>
 }
 

@@ -14,6 +14,7 @@ export function AddNote({ onAddNewNote }) {
         newNote.type = noteType.current
         newNote.info[field] = value
         setNewNote(() => ({ ...newNote }))
+        // setNewNote(() => ({ ...newNote, [field]: value }))
     }
 
     function onSubmitNote(ev) {

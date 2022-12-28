@@ -1,3 +1,4 @@
+const { Fragment } = React
 const { Link } = ReactRouterDOM
 //js
 import { mailService } from "../services/mail.service.js"
@@ -6,18 +7,18 @@ import { LongTxt } from "./long-txt.jsx"
 
 export function MailPreview({ mail }) {
 
+
     function onMoveToTrash(mail) {
         mailService.setIsTrash(mail)
     }
 
-    return <li className="mail-preview">
-        <Link to={`/mail/${mail.id}`}>
-            <h4>{mail.subject}</h4>
-            <LongTxt txt={mail.body} length={10} />
-            <h4>{mailService.getDate(mail.sentAt)}</h4>
-            {mail.isRead && <h4>Mail Read</h4>}
-            {!mail.isRead && <h4>Mail Unread</h4>}
-        </Link>
-        <button onClick={() => onMoveToTrash(mail)}>Move to trash</button>
-    </li>
+    return <Fragment>
+        <td className="mail-date"><Link to={`/mail/${mail.id}`}><h4>{mailService.getDate(mail.sentAt)}</h4></Link></td>
+        <td><button className="trans-btn" onClick={() => onMoveToTrash(mail)}><span className="material-symbols-outlined">delete</span></button></td>
+        <td ><Link to={`/mail/${mail.id}`}><h4>{mail.subject}</h4></Link></td>
+        <td><Link to={`/mail/${mail.id}`}><h4>{mail.from}</h4></Link></td>
+        <td><Link to={`/mail/${mail.id}`}><LongTxt txt={mail.body} length={10} /></Link></td>
+        {mail.isRead && <td><Link to={`/mail/${mail.id}`}><h4>Mail Read</h4></Link></td>}
+        {!mail.isRead && <td><Link to={`/mail/${mail.id}`}><h4>Mail Unread</h4></Link></td>}
+    </Fragment>
 }

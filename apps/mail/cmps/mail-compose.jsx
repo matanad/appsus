@@ -3,31 +3,24 @@ const { useNavigate, useParams, Link } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
 
-export function MailCompose(){
+export function MailCompose({setIsComposeOpen}){
 
-    const [mails, setMails] = useState([])
-    const debounceLoadFromGoogle = useRef(null)
+    const [newMail, setNewMail] = useState(mailService.getEmptyMail())
+    // const navigate = useNavigate()
 
-    useEffect(() => {
-        loadMails()
-    }, [])
-
-    function loadMails() {
-        mailService.query().then(mailsToSet => {
-            console.log('allMails from mails compose:', mailsToSet)
-            setMails(mailsToSet)
-        })
+    function handleChange({ target }) {
+        let { value, name: field } = target
+        setNewMail((prevMail) => ({ ...prevMail, [field]: value }))
     }
 
-    function onAddMail(mail) {
-        console.log('mail from onaddmail:', mail)
-        mailService.save(mail).then((mail) => {
-            // showSuccessMsg('Book saved!')
-            navigate('/mail/')
+    function onAddMail(ev) {
+        ev.preventDefault()
+        mailService.save(newMail).then((mail) => {
+            setIsComposeOpen()
+            // showSuccessMsg('Mail sent')
+            // navigate('/mail/')
         })
     }
-
-
 
     return <div className="mail-compose">
             <h1>HI FROM MAIL COMPOSE</h1>
@@ -35,24 +28,24 @@ export function MailCompose(){
             <form onSubmit={onAddMail}>
             <label htmlFor="mail-to">To : </label>
             <input type="text"
-                name="mail-to"
+                name="to"
                 id="mail-to"
                 placeholder="To..."
-                // onChange={handleChange}
+                onChange={handleChange}
             />
             <label htmlFor="mail-Subject">Subject : </label>
             <input type="text"
-                name="mail-Subject"
+                name="subject"
                 id="mail-Subject"
                 placeholder="Subject..."
-                // onChange={handleChange}
+                onChange={handleChange}
             />
-            <label htmlFor="title">Content : </label>
+            <label htmlFor="body">Content : </label>
             <input type="text-area"
-                name="mail-content"
-                id="title"
-                placeholder="Enter book title..."
-                // onChange={handleChange}
+                name="body"
+                id="body"
+                placeholder="Mail content..."
+                onChange={handleChange}
             />
             <button>Send</button>
             </form>

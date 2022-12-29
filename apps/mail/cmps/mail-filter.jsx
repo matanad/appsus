@@ -1,24 +1,18 @@
 const { useState, useEffect, useRef } = React
 
 import { mailService } from "../services/mail.service.js"
+import { eventBusService } from "../../../services/event-bus.service.js"
+
 
 export function MailFilter() {
 
     const [filterByToEdit, setFilterByToEdit] = useState(mailService.getDefaultFilter())
     const elInputRef = useRef(null)
     const prevFilterType = useRef('')
-    const [mails, setMails] = useState([])
 
     useEffect(() => {
-        loadMails()
-    }, [filterByToEdit, mails])
-
-    function loadMails() {
-        mailService.queryWithFilter(filterByToEdit).then(mailsToSet => {
-            console.log('allMails from mail:', mailsToSet)
-            setMails(mails)
-        })
-    }
+        eventBusService.emit('loadMails', filterByToEdit)
+    }, [filterByToEdit])
 
     function handleSelectChange({ target }) {
         let { value } = target
@@ -36,15 +30,13 @@ export function MailFilter() {
         })
     }
 
-
-
     function onSubmitFilter(ev) {
         ev.preventDefault()
         onSetFilter(filterByToEdit)
     }
 
-    return <section className="mail-top-filter">
-        <form onSubmit={onSubmitFilter}>
+    return <section className="mail-top-filter ">
+        <form onSubmit={onSubmitFilter} className="main-search">
             <input type="text"
                 name="txt"
                 id="subject-filter"

@@ -16,7 +16,6 @@ export function MailDetails() {
     const params = useParams()
 
     useEffect(() => {
-        // console.log('params.mailId:', params.mailId)
         loadMail()
     }, [])
 
@@ -28,15 +27,12 @@ export function MailDetails() {
                 setMail(mail)
             })
             .catch((err) => {
-                console.log('Had issues in mail details', err)
                 navigate('/mail')
             })
     }
 
     if (!mail) return <h1>Loading....</h1>
     return <main className="mail-details-container">
-        {/* <MailTopFilter/> */}
-        {/* <MailSideFiler/> */}
         <h4>{mailService.getDate(mail.sentAt)}</h4>
         <h4>{mail.subject}</h4>
         <h4>{mail.body}</h4>

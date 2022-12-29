@@ -15,7 +15,7 @@ export function App() {
     return <Router>
         <section className="app">
             <AppHeader />
-            <MailFilter/>
+            {/* <MailFilter/> */}
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />

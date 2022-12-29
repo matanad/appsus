@@ -19,7 +19,6 @@ export function AddNote({ onAddNewNote }) {
 
     function onSubmitNote(ev) {
         ev.preventDefault()
-        console.log(elInput.current);
         elInput.current.value = ''
         setNewNote(() => noteService.getEmptyNote())
         // update father cmp that filters change on submit

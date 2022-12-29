@@ -20,13 +20,13 @@ export function AppHeader() {
             <div className="logo"/>
         </Link>
         <div className="main-search">
-            <span class="material-symbols-outlined">
+            <span className="material-symbols-outlined">
                 search
             </span>
             <input placeholder="Search Here" />
         </div>
         <nav className="apps-menu-btn">
-            <span onClick={onOpenAppsMenu} class="material-symbols-outlined">
+            <span onClick={onOpenAppsMenu} className="material-symbols-outlined">
                 apps
             </span>
             {isAppsMenuOpen && <AppsMenu/>}

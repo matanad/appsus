@@ -2,26 +2,29 @@ const { useState, useEffect } = React
 
 //js
 import { mailService } from "../services/mail.service.js"
+import { eventBusService } from "../../../services/event-bus.service.js"
+
 //jsx
 import { MailCompose } from "../cmps/mail-compose.jsx"
 import { MailList } from "../cmps/mail-list.jsx"
+import { MailFilter } from "../cmps/mail-filter.jsx"
 
 export function MailIndex() {
     const [isComposeOpen, setIsComposeOpen] = useState(false)
 
-    // const [isLoading, setIsLoading] = useState(false)
     const [mails, setMails] = useState([])
 
     useEffect(() => {
-        // setIsLoading(true)
+       eventBusService.on('loadMails', loadMails)
+    }, [])
+
+    useEffect(() => {
         loadMails()
     }, [isComposeOpen])
 
-    function loadMails() {
-        mailService.query().then(mailsToSet => {
-            console.log('allMails from mail:', mailsToSet)
+    function loadMails(filter) {
+        mailService.query(filter).then(mailsToSet => {
             setMails(mailsToSet)
-            // setIsLoading(false)
         })
     }
 
@@ -32,6 +35,7 @@ export function MailIndex() {
 
 
     return <main className='mail-index'>
+        <MailFilter/>
         <section className="new-mail-container">
         <button onClick={onNewMail}>New Mail</button>
         {isComposeOpen && <MailCompose setIsComposeOpen={setIsComposeOpen} />}

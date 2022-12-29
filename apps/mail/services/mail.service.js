@@ -14,10 +14,10 @@ export const mailService = {
   getDate,
   getEmptyMail,
   getDefaultFilter,
-  queryWithFilter,
+  
 }
 
-function queryWithFilter(filterBy = getDefaultFilter()) {
+function query(filterBy = getDefaultFilter()) {
   return storageService.query(MAIL_KEY)
       .then(mails => {
           if (filterBy.txt) {
@@ -116,9 +116,9 @@ function _createMails() {
   }
 }
 
-function query() {
-  return storageService.query(MAIL_KEY)
-}
+// function query() {
+//   return storageService.query(MAIL_KEY)
+// }
 
 function get(mailId) {
   return storageService.get(MAIL_KEY, mailId)

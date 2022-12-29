@@ -22,11 +22,11 @@ export function MailList({ mails }) {
         return counter
     }
 
-    return <section className="mail-table-container full">
+    return <section className="mail-table-container ">
         <h1>Read mails: {getReadMailsCount()}</h1>
         <h1>Unread mails: {getUnReadMailsCount()}</h1>
         <table className="mail-table ">
-            <tbody className="main-layout">
+            <tbody className="">
             {
                 mails.map(mail =>
                     <tr className={`mail-list-item ${mail.isRead && 'mail-is-read'}`} key={mail.id}>

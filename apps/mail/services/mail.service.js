@@ -14,27 +14,28 @@ export const mailService = {
   getDate,
   getEmptyMail,
   getDefaultFilter,
-  
+
 }
 
 function query(filterBy = getDefaultFilter()) {
   return storageService.query(MAIL_KEY)
-      .then(mails => {
-          if (filterBy.txt) {
-              const regex = new RegExp(filterBy.txt, 'i')
-              mails = mails.filter(mail => regex.test(mail.subject))
-          }
-          if (filterBy.byIsRead) {
-              mails = mails.filter(mail => mail.isRead)
-          }
-          if (filterBy.byIsNotRead) {
-              mails = mails.filter(mail => !mail.isRead)
-          }
-          // if (filterBy.minYear) {
-          //     mails = mails.filter(mail => filterBy.minYear >= utilService.getYearsDistance(mail.publishedDate))
-          // }
-          return mails
-      })
+    .then(mails => {
+      // mails = mails.filter(mail => !mail.isTrash)
+      if (filterBy.txt) {
+        const regex = new RegExp(filterBy.txt, 'i')
+        mails = mails.filter(mail => regex.test(mail.subject))
+      }
+      if (filterBy.byIsRead) {
+        mails = mails.filter(mail => mail.isRead)
+      }
+      if (filterBy.byIsNotRead) {
+        mails = mails.filter(mail => !mail.isRead)
+      }
+      // if (filterBy.minYear) {
+      //     mails = mails.filter(mail => filterBy.minYear >= utilService.getYearsDistance(mail.publishedDate))
+      // }
+      return mails
+    })
 }
 
 function getDefaultFilter() {

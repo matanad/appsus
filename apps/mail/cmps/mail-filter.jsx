@@ -3,9 +3,7 @@ const { useState, useEffect, useRef } = React
 import { mailService } from "../services/mail.service.js"
 import { eventBusService } from "../../../services/event-bus.service.js"
 
-
 export function MailFilter() {
-
     const [filterByToEdit, setFilterByToEdit] = useState(mailService.getDefaultFilter())
     const elInputRef = useRef(null)
     const prevFilterType = useRef('')
@@ -50,8 +48,6 @@ export function MailFilter() {
                 <option value='byIsRead'>Read</option>
                 <option value='byIsNotRead'>Uread</option>
             </select>
-
-            {/* <button className="filter-btn">Filter Mails</button> */}
         </form>
     </section>
 }

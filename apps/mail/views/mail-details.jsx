@@ -7,7 +7,6 @@ import { mailService } from "../services/mail.service.js"
 //jsx
 import { MailCompose } from "../cmps/mail-compose.jsx"
 // import { MailSideFiler } from "../cmps/mail-side-filter.jsx"
-// import { MailTopFilter } from "../cmps/mail-top-filter.jsx"
 
 export function MailDetails() {
     const isComposeOpen = false

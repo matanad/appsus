@@ -1,3 +1,8 @@
+.note-app{
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
 .note {
     display: inline-block;
     background-color: var(--red);
@@ -7,6 +12,7 @@
     margin-bottom: 1em;
     border-radius: 8px;
     transition: background-color .5s;
+    margin: 1em .5em
 }
 
 .note>* {
@@ -51,7 +57,7 @@
     max-width: 350px;
     overflow: scroll;
     overflow-x: hidden;
-    -webkit-line-clamp: 50;
+    -webkit-line-clamp: 15;
     max-height: 50%;
 }
 

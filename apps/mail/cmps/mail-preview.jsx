@@ -17,7 +17,7 @@ export function MailPreview({ mail }) {
         <td><Link to={`/mail/${mail.id}`}><h4>{mail.from}</h4></Link></td>
         <td ><Link to={`/mail/${mail.id}`}><h4>{mail.subject}</h4></Link></td>
         <td><Link to={`/mail/${mail.id}`}><LongTxt txt={mail.body} length={10} /></Link></td>
-        <td><button className="trash-btn11" onClick={() => onMoveToTrash(mail)}><span className="material-symbols-outlined">delete</span></button></td>
+        <td><button className="trash-btn" onClick={() => onMoveToTrash(mail)}><span className="material-symbols-outlined">delete</span></button></td>
         <td className="mail-date"><Link to={`/mail/${mail.id}`}><h4>{mailService.getDate(mail.sentAt)}</h4></Link></td>
 
         {/* {mail.isRead && <td><Link to={`/mail/${mail.id}`}><h4>Mail Read</h4></Link></td>}

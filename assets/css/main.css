@@ -33,4 +33,6 @@
 /* @import './apps/mail/cmps/mail-list.css'; */
 
 /* Mail */
-@import './cmps/mail-app/mail-list.css'
+@import './cmps/mail-app/mail-list.css';
+@import './cmps/mail-app/mail-preview.css';
+@import './cmps/mail-app/mail-compose.css';

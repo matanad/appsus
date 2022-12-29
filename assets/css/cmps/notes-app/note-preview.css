@@ -1,11 +1,22 @@
+.note-app{
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
 .note {
+    display: inline-block;
     background-color: var(--red);
-    max-width: 240px;
-    width: 100%;
+    /* max-width: 240px; */
+    /* width: 100%; */
     padding: 1em 2em;
     margin-bottom: 1em;
     border-radius: 8px;
     transition: background-color .5s;
+    margin: 1em .5em
+}
+
+.note>* {
+    max-width: 240px;
 }
 
 .note .note-header {
@@ -29,6 +40,25 @@
 .note .btn-controls>* {
     opacity: 0;
     transition: opacity .3s;
+}
+
+.editable {
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+    /* max-height: 96ch; */
+    -webkit-line-clamp: 8;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.editable:focus {
+    outline: none;
+    max-width: 350px;
+    overflow: scroll;
+    overflow-x: hidden;
+    -webkit-line-clamp: 15;
+    max-height: 50%;
 }
 
 .btns-color-container {
@@ -64,6 +94,6 @@
     background-color: var(--red);
 }
 
-.purple{
+.purple {
     background-color: var(--purple);
 }

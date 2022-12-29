@@ -2,12 +2,13 @@
     background-color: var(--main-bg-color);
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
     padding: 1em 2em;
-    margin: 1em 0;
+    margin: 1em auto;
     max-width: 598px;
     border-radius: 8px;
 }
 
 .add-note input{
+    width: 100%;
     background-color: transparent;
     border: none;
 }

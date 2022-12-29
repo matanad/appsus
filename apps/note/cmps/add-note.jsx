@@ -41,8 +41,8 @@ export function AddNote({ onAddNewNote }) {
                 placeholder="Take a note..."
             />}
             <button>Submit</button>
-            <button className="btn-todos" type="button" onClick={() => setNoteTpye('note-todos')}>
-                <span className="material-symbols-outlined">
+            <button className="btn-todos" type="button" onClick={() => noteType.current('note-todos')}>
+                <span className="material-symbols-outlined" onClick={() => noteType.current('note-todos')}>
                     check_box
                 </span>
             </button>

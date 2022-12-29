@@ -48,7 +48,7 @@ function getEmptyMail(to = '', subject = '', body = '') {
     isRead: false,
     sentAt: Date.now(),
     to: '',
-    from: '',
+    from: 'Me',
     isTrash: false,
     folder: ['new'],
   }

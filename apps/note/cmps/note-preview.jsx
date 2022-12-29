@@ -3,24 +3,24 @@ const { useState } = React
 import { ColorPalet } from "./color-palet.jsx";
 import { DynamicCmp } from "./dynamic-note.jsx";
 
-export function NotePreview({ note, onDeleteNote , saveNote}) {
+export function NotePreview({ note, onDeleteNote, saveNote }) {
     const [isPalletOpen, setIsPalletOpen] = useState(false)
     const [classColor, setClassColor] = useState(note.color)
 
-    function onSetColor(color){
+    function onSetColor(color) {
         setClassColor(color)
         note.color = color
         saveNote(note)
     }
 
-    function getColorClass(){
+    function getColorClass() {
         return classColor
     }
 
     return <article className={`note ${getColorClass()}`}>
         <DynamicCmp note={note}
-            type={note.type} 
-            saveNote={saveNote}/>
+            type={note.type}
+            saveNote={saveNote} />
         <div className="btn-controls">
             <button className="btn-delete" onClick={() => onDeleteNote(note.id)}>
                 <span className="material-symbols-outlined">
@@ -32,7 +32,7 @@ export function NotePreview({ note, onDeleteNote , saveNote}) {
                     palette
                 </span>
             </button>
-            {isPalletOpen && <ColorPalet onSetColor={onSetColor}/>}
+            {isPalletOpen && <ColorPalet onSetColor={onSetColor} />}
         </div>
-    </article>
+    </article >
 }

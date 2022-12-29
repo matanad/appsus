@@ -56,7 +56,7 @@ export function AddNote({ onAddNewNote }) {
                 </span>
             </button>
             <button className="btn-img" type="button" onClick={() => setNoteType('note-img')}>
-                <span class="material-symbols-outlined">
+                <span className="material-symbols-outlined">
                     image
                 </span>
             </button>

@@ -1,11 +1,13 @@
-const { Link, NavLink, useParams } = ReactRouterDOM
+const { Link, NavLink, useParams , useLocation } = ReactRouterDOM
 const Router = ReactRouterDOM
 const { useState, useEffect, useRef } = React
 
+import { MailFilter } from "../apps/mail/cmps/mail-filter.jsx"
 import { AppsMenu } from "./apps-menu.jsx"
 
 export function AppHeader() {
-    // const params = dangerouslyGetParent()
+    const {pathname} = useLocation()
+    console.log('app:', pathname)
 
 
     const  [isAppsMenuOpen, setIsAppsMenuOpen] = useState(true)
@@ -19,12 +21,13 @@ export function AppHeader() {
         <Link to="/">
             <div className="logo"/>
         </Link>
-        <div className="main-search">
+        {pathname.includes('/mail') && <MailFilter/>}
+        {/* <div className="main-search">
             <span className="material-symbols-outlined">
                 search
             </span>
             <input placeholder="Search Here" />
-        </div>
+        </div> */}
         <nav className="apps-menu-btn">
             <span onClick={onOpenAppsMenu} className="material-symbols-outlined">
                 apps

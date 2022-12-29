@@ -23,26 +23,25 @@ export function MailCompose({setIsComposeOpen}){
     }
 
     return <div className="mail-compose">
-            <h1>HI FROM MAIL COMPOSE</h1>
 
-            <form onSubmit={onAddMail}>
-            <label htmlFor="mail-to">To : </label>
-            <input type="text"
+            <form onSubmit={onAddMail} className='compose-mail-form'>
+            {/* <label htmlFor="mail-to">To</label> */}
+            <input type="email"
                 name="to"
                 id="mail-to"
                 placeholder="To..."
                 onChange={handleChange}
             />
             
-            <label htmlFor="mail-Subject">Subject : </label>
+            {/* <label htmlFor="mail-Subject">Subject</label> */}
             <input type="text"
                 name="subject"
                 id="mail-Subject"
                 placeholder="Subject..."
                 onChange={handleChange}
             />
-            <label htmlFor="body">Content : </label>
-            <input type="text-area"
+            {/* <label htmlFor="body">Content</label> */}
+            <textarea type="text"
                 name="body"
                 id="body"
                 placeholder="Mail content..."

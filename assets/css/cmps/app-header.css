@@ -50,3 +50,12 @@ nav a.active {
 .main-search input:focus {
     outline: none;
 }
+
+.apps-menu-btn{
+    margin-inline-end: 2rem;
+}
+
+.apps-menu-btn span{
+    font-size: 2.5rem;
+}
+

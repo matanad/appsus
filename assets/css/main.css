@@ -19,6 +19,8 @@
 
 /* Cmps */
 
+@import './cmps/apps-menu.css';
+
 @import './cmps/user-msg.css';
 @import './cmps/app-header.css';
 

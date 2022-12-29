@@ -24,17 +24,17 @@ export function NoteIndex() {
             .then(loadNotes)
     }
 
-    function onAddNewNote(note) {
+    function onSaveNote(note) {
         noteService.save(note)
             .then(loadNotes)
     }
 
     return <div className="note-app">
         <header>
-            <AddNote onAddNewNote={onAddNewNote} />
+            <AddNote onAddNewNote={onSaveNote} />
         </header>
         <main className="note-list">
-            <NoteList notes={notes} onDeleteNote={onDeleteNote} saveNote={onAddNewNote} />
+            <NoteList notes={notes} onDeleteNote={onDeleteNote} saveNote={onSaveNote} />
         </main>
     </div>
 

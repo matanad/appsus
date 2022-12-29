@@ -43,10 +43,21 @@ export function AddNote({ onAddNewNote }) {
                 getEmptyTodo={noteService.getEmptyTodo}
                 setNewNote={setNewNote}
             />}
+             {noteType === 'note-img' && <input
+                onChange={handleChange}
+                name="url"
+                type="text"
+                placeholder="Enter a url..."
+            />}
             <button>Submit</button>
             <button className="btn-todos" type="button" onClick={() => setNoteType('note-todos')}>
                 <span className="material-symbols-outlined" onClick={() => setNoteType('note-todos')}>
                     check_box
+                </span>
+            </button>
+            <button className="btn-img" type="button" onClick={() => setNoteType('note-img')}>
+                <span class="material-symbols-outlined">
+                    image
                 </span>
             </button>
         </form>

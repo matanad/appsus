@@ -97,3 +97,11 @@
 .purple {
     background-color: var(--purple);
 }
+
+.note .todo{
+    cursor: pointer;
+}
+
+.note .todo.done{
+    text-decoration: line-through;
+}

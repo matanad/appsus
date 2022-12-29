@@ -1,7 +1,7 @@
 const { Fragment, useState, useEffect, useRef } = React
 
 export function CreateTodo({ handleChange, setNewNote }) {
-    const todos = useRef([{ txt: '', label: '' }])
+    const todos = useRef([{ txt: '', doneAt: null }])
 
     useEffect(() => {
         return (() => { todos.current = [{ txt: '' }] })
@@ -35,7 +35,7 @@ export function CreateTodo({ handleChange, setNewNote }) {
             <input
                 type='text'
                 key={idx}
-                placeholder='List item'
+                placeholder='What todo?'
                 value={todo.txt}
                 className='todo-line'
                 name="todos"

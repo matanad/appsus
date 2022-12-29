@@ -1,7 +1,12 @@
 const { Fragment } = React
 
-export function NoteTodos({ note }) {
+export function NoteTodos({ note, saveNote }) {
     const { todos, label } = note.info
+
+    function toggleIsDone(idx) {
+        todos[idx].doneAt = !todos[idx].doneAt ? Date.now() : null
+        saveNote(note)
+    }
 
     return <Fragment>
         <header className="note-header">
@@ -9,7 +14,9 @@ export function NoteTodos({ note }) {
         </header>
         {
             todos.map(((todo, idx) =>
-                <p key={note.id + todo.txt}>
+                <p className={`todo ${todo.doneAt && 'done'}`}
+                    onClick={() => toggleIsDone(idx)}
+                    key={note.id + todo.txt}>
                     {todo.txt}
                 </p>
             ))

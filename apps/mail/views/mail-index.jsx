@@ -1,4 +1,5 @@
-const { useState, useEffect } = React
+const { useState, useEffect, useRef } = React
+const { useNavigate, useParams, Link } = ReactRouterDOM
 
 //js
 import { mailService } from "../services/mail.service.js"
@@ -12,16 +13,22 @@ import { MailSideFiler } from "../cmps/mail-side-filter.jsx"
 export function MailIndex() {
     const [isComposeOpen, setIsComposeOpen] = useState(false)
     const [mails, setMails] = useState([])
+    const { folderName } = useParams()
+    const filter = useRef(mailService.getDefaultFilter())
+    console.log('folderName:', folderName)
 
     useEffect(() => {
+        filter.current[folderName] = true
+            loadMails(filter.current)
         eventBusService.on('loadMails', loadMails)
-    }, [])
+    }, [folderName])
 
     useEffect(() => {
-        loadMails()
+        loadMails(filter.current)
     }, [isComposeOpen])
 
     function loadMails(filter) {
+        console.log('filter:', filter)
         mailService.query(filter).then(mailsToSet => {
             setMails(mailsToSet)
         })
@@ -37,7 +44,7 @@ export function MailIndex() {
         <section className="main-container full">
             <section className="main-side-bar-container">
 
-                <div onClick={onNewMail}  className="compose-btn">
+                <div onClick={onNewMail} className="compose-btn">
                     <span className="material-symbols-outlined">
                         edit
                     </span>

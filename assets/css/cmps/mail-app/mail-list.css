@@ -58,11 +58,13 @@
 }
 
 .mail-top-filter{
-    background-color: rgb(179, 192, 192);
+    background-color: rgba(78, 78, 78, 0.5);
     padding: 10px;
     display: flex;
     justify-content: center;
     box-shadow: rgba(100, 121, 143, 0.12) 0px -1px 0px 0px inset;
+    border-radius: 10px;
+    margin: 0px 5px;
 
 }
 

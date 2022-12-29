@@ -10,7 +10,7 @@ export const mailService = {
   get,
   remove,
   save,
-  setIsTrash,
+  setTrashOrDelete,
   getDate,
   getEmptyMail,
   getDefaultFilter,
@@ -20,7 +20,9 @@ export const mailService = {
 function query(filterBy = getDefaultFilter()) {
   return storageService.query(MAIL_KEY)
     .then(mails => {
-      // mails = mails.filter(mail => !mail.isTrash)
+      if (!filterBy.isTrash) {
+        mails = mails.filter(mail => !mail.isTrash)
+      }
       if (filterBy.txt) {
         const regex = new RegExp(filterBy.txt, 'i')
         mails = mails.filter(mail => regex.test(mail.subject))
@@ -31,6 +33,9 @@ function query(filterBy = getDefaultFilter()) {
       if (filterBy.byIsNotRead) {
         mails = mails.filter(mail => !mail.isRead)
       }
+      if (filterBy.isTrash) {
+        mails = mails.filter(mail => mail.isTrash)
+      }
       // if (filterBy.minYear) {
       //     mails = mails.filter(mail => filterBy.minYear >= utilService.getYearsDistance(mail.publishedDate))
       // }
@@ -38,8 +43,12 @@ function query(filterBy = getDefaultFilter()) {
     })
 }
 
+// function query() {
+//   return storageService.query(MAIL_KEY)
+// }
+
 function getDefaultFilter() {
-  return { byIsRead: false, byIsNotRead: false, txt: '' }
+  return { byIsRead: false, byIsNotRead: false, txt: '', isTrash: false }
 }
 
 function getEmptyMail(to = '', subject = '', body = '') {
@@ -69,9 +78,14 @@ function getDate(timestamp) {
   return month + '/' + day + '/' + year;
 }
 
-function setIsTrash(mail) {
-  mail.isTrash = true
-  storageService.put(MAIL_KEY, mail)
+function setTrashOrDelete(mail) {
+  if (!mail.removedAt) {
+    mail.isTrash = true
+    mail.removedAt = Date.now()
+    return save(mail)
+  } else {
+    return remove(mail.id)
+  }
 }
 
 function _createMails() {
@@ -88,6 +102,7 @@ function _createMails() {
         from: 'Wix',
         isTrash: false,
         folder: ['new', 'important',],
+        removedAt: null,
       },
       {
         id: 'e102',
@@ -99,6 +114,7 @@ function _createMails() {
         from: 'Dana',
         isTrash: false,
         folder: ['new', 'important',],
+        removedAt: null,
       },
       {
         id: 'e103',
@@ -110,6 +126,7 @@ function _createMails() {
         from: 'Matan',
         isTrash: false,
         folder: ['new', 'important',],
+        removedAt: null,
       },
     ]
 
@@ -117,9 +134,7 @@ function _createMails() {
   }
 }
 
-// function query() {
-//   return storageService.query(MAIL_KEY)
-// }
+
 
 function get(mailId) {
   return storageService.get(MAIL_KEY, mailId)

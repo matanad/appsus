@@ -1,0 +1,14 @@
+.side-nav-folders > div {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.25rem 1rem 0.25rem 0.5rem;
+    gap: 1rem;
+    width: 13.5rem;
+    height: 2rem;
+    font-size: 0.875rem;
+    border-radius: 0 2rem 2rem 0;
+    margin: 10px;
+}
+
+

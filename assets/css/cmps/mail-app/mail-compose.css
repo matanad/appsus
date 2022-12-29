@@ -1,15 +1,23 @@
-
 .compose-mail-form {
-    height: 32rem;
-    position: absolute;
-    width: 30rem;
-    bottom: 0;
+    position: absolute;    
     display: flex;
-    left: 22%;
-    background-color: whitesmoke;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    left: 22%;
+    bottom: 0;
+    background-color: rgb(255, 255, 255);
+    right: 1rem;
+    height: 37.5rem;
+    width: 37.5rem;
+    box-shadow: 7px -2px 4px 0px rgb(0 0 0 / 25%);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.form-header{
+    padding: 10px 5px;
+    margin: 0;
+    font-size: large;
+    background-color: var(--gray2);
 }
 
 .mail-compose input{
@@ -19,12 +27,12 @@
     font-size: 1rem;
     box-shadow: rgb(100 121 143 / 12%) 0px -1px 0px 0px inset;
     margin-bottom: 0.5rem;
-
 }
 
 .mail-compose textarea{
+    resize: none;
     width: 100%;
-    height: 59%;
+    height: 70%;
     border: none;
     padding: 0.5rem 0.3rem;
     font-size: 1rem;
@@ -32,3 +40,32 @@
     margin-bottom: 0.5rem;
 
 }
+
+.form-send-btn {
+    background: #0b57d0;
+    background-image: -webkit-linear-gradient(top, #0b57d0, #0b57d0);
+    background-image: -moz-linear-gradient(top, #0b57d0, #0b57d0);
+    background-image: -ms-linear-gradient(top, #0b57d0, #0b57d0);
+    background-image: -o-linear-gradient(top, #0b57d0, #0b57d0);
+    background-image: linear-gradient(to bottom, #0b57d0, #0b57d0);
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 20px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+    padding: 7px 24px 7px 23px;
+    text-decoration: none;
+  }
+  
+  .form-send-btn:hover {
+    background: #2264ce;
+    background-image: -webkit-linear-gradient(top, #2169dd, #2c6fdb);
+    background-image: -moz-linear-gradient(top, #0b57d0, #295fb5);
+    background-image: -ms-linear-gradient(top, #295cad, #0b57d0);
+    background-image: -o-linear-gradient(top, #2856a0, #234e93);
+    background-image: linear-gradient(to bottom, #295192, #224b8c);
+    text-decoration: none;
+  }

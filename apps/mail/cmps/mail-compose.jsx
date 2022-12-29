@@ -1,9 +1,9 @@
 const { useState, useEffect, useRef } = React
-const { useNavigate, useParams, Link } = ReactRouterDOM
+// const { useNavigate, useParams, Link } = ReactRouterDOM
 
 import { mailService } from "../services/mail.service.js"
 
-export function MailCompose({setIsComposeOpen}){
+export function MailCompose({ setIsComposeOpen }) {
 
     const [newMail, setNewMail] = useState(mailService.getEmptyMail())
     // const navigate = useNavigate()
@@ -24,7 +24,13 @@ export function MailCompose({setIsComposeOpen}){
 
     return <div className="mail-compose">
 
-            <form onSubmit={onAddMail} className='compose-mail-form'>
+
+        <form onSubmit={onAddMail} className='compose-mail-form'>
+
+            <header className="form-header flex">
+                <div>New Message</div>
+            </header>
+
             {/* <label htmlFor="mail-to">To</label> */}
             <input type="email"
                 name="to"
@@ -32,7 +38,7 @@ export function MailCompose({setIsComposeOpen}){
                 placeholder="To"
                 onChange={handleChange}
             />
-            
+
             {/* <label htmlFor="mail-Subject">Subject</label> */}
             <input type="text"
                 name="subject"
@@ -40,6 +46,7 @@ export function MailCompose({setIsComposeOpen}){
                 placeholder="Subject"
                 onChange={handleChange}
             />
+
             {/* <label htmlFor="body">Content</label> */}
             <textarea type="text"
                 name="body"
@@ -47,8 +54,11 @@ export function MailCompose({setIsComposeOpen}){
                 placeholder=""
                 onChange={handleChange}
             />
-            <button>Send</button>
-            </form>
+
+            <div className="form-btns-container flex">
+                <button className="form-send-btn">Send</button>
+            </div>
+        </form>
     </div>
 
 }

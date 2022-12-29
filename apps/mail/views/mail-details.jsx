@@ -9,7 +9,6 @@ import { MailCompose } from "../cmps/mail-compose.jsx"
 // import { MailSideFiler } from "../cmps/mail-side-filter.jsx"
 // import { MailTopFilter } from "../cmps/mail-top-filter.jsx"
 
-
 export function MailDetails() {
     const isComposeOpen = false
     const [mail, setMail] = useState(null)
@@ -39,5 +38,6 @@ export function MailDetails() {
         <button onClick={() => onMoveToTrash(mail)}>Move to trash</button>
         <Link to='/mail/'>To all Emails</Link>
         {isComposeOpen && <MailCompose />}
+
     </main>
 }

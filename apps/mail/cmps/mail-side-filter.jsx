@@ -1,8 +1,7 @@
 import { MailFolderList } from "./mail-folder-list.jsx"
 
 export function MailSideFiler(){
-    return <div>
+    return <section className="side-nav-container">
         <MailFolderList/>
-        hi from side filter
-    </div>
+    </section>
 }

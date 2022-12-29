@@ -33,6 +33,7 @@ export function MailCompose({setIsComposeOpen}){
                 placeholder="To..."
                 onChange={handleChange}
             />
+            
             <label htmlFor="mail-Subject">Subject : </label>
             <input type="text"
                 name="subject"

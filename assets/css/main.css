@@ -30,8 +30,6 @@
 @import './cmps/notes-app/note-preview.css';
 @import './cmps/notes-app/add-note.css';
 
-/* @import './apps/mail/cmps/mail-list.css'; */
-
 /* Mail */
 @import './cmps/mail-app/mail-list.css';
 @import './cmps/mail-app/mail-preview.css';

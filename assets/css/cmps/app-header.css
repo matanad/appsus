@@ -1,6 +1,7 @@
 header.app-header {
-    background: lightcyan;
+    background: var(--main-bg-color);
     border-bottom: 2px solid white;
+    box-shadow: rgb(218, 220, 224) 0px -1px 0px 0px inset;
 }
 
 .app-header {
@@ -21,4 +22,31 @@ nav a.active {
     color: darkblue;
     font-weight: bold;
     text-decoration: overline;
+}
+
+.main-search {
+    border-radius: 8px;
+    background-color: #fafafa;
+    border-color: transparent;
+}
+
+.main-search>* {
+    padding: 11px 0;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    margin-inline-end: .5rem;
+}
+
+.main-search span {
+    cursor: pointer;
+}
+
+.main-search:focus-within{
+    background-color: var(--main-bg-color);
+    box-shadow: rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px, rgba(0, 0, 0, 0.2) 0px 2px 4px -1px;
+}
+
+.main-search input:focus {
+    outline: none;
 }

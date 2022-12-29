@@ -1,4 +1,4 @@
-const { Link, NavLink, useParams  } = ReactRouterDOM
+const { Link, NavLink, useParams } = ReactRouterDOM
 const Router = ReactRouterDOM
 
 export function AppHeader() {
@@ -9,8 +9,16 @@ export function AppHeader() {
         <Link to="/">
             <h3>LOGO!</h3>
         </Link>
-        <input placeholder="Search Here" />
+        <div className="main-search">
+            <span class="material-symbols-outlined">
+                search
+            </span>
+            <input placeholder="Search Here" />
+        </div>
         <nav>
+            <span class="material-symbols-outlined">
+                apps
+            </span>
             <NavLink to="/">Home</NavLink>
             <NavLink to="/about">About</NavLink>
             <NavLink to="/mail">Mail</NavLink>

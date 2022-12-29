@@ -1,0 +1,34 @@
+
+.compose-mail-form {
+    height: 32rem;
+    position: absolute;
+    width: 30rem;
+    bottom: 0;
+    display: flex;
+    left: 22%;
+    background-color: whitesmoke;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+.mail-compose input{
+    width: 100%;
+    border: none;
+    padding: 0.5rem 0.3rem;
+    font-size: 1rem;
+    box-shadow: rgb(100 121 143 / 12%) 0px -1px 0px 0px inset;
+    margin-bottom: 0.5rem;
+
+}
+
+.mail-compose textarea{
+    width: 100%;
+    height: 59%;
+    border: none;
+    padding: 0.5rem 0.3rem;
+    font-size: 1rem;
+    box-shadow: rgb(100 121 143 / 12%) 0px -1px 0px 0px inset;
+    margin-bottom: 0.5rem;
+
+}

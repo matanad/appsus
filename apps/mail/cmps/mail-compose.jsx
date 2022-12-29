@@ -29,7 +29,7 @@ export function MailCompose({setIsComposeOpen}){
             <input type="email"
                 name="to"
                 id="mail-to"
-                placeholder="To..."
+                placeholder="To"
                 onChange={handleChange}
             />
             
@@ -37,14 +37,14 @@ export function MailCompose({setIsComposeOpen}){
             <input type="text"
                 name="subject"
                 id="mail-Subject"
-                placeholder="Subject..."
+                placeholder="Subject"
                 onChange={handleChange}
             />
             {/* <label htmlFor="body">Content</label> */}
             <textarea type="text"
                 name="body"
                 id="body"
-                placeholder="Mail content..."
+                placeholder=""
                 onChange={handleChange}
             />
             <button>Send</button>

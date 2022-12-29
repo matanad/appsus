@@ -18,7 +18,7 @@ export function MailIndex() {
 
     useEffect(() => {
         filter.current[folderName] = true
-            loadMails(filter.current)
+        loadMails(filter.current)
         eventBusService.on('loadMails', loadMails)
     }, [folderName])
 
@@ -38,8 +38,6 @@ export function MailIndex() {
     }
 
     return <main className='mail-index full'>
-        <MailFilter />
-
         <section className="main-container full">
             <section className="main-side-bar-container">
 

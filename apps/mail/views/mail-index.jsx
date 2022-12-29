@@ -15,7 +15,6 @@ export function MailIndex() {
     const [mails, setMails] = useState([])
     const { folderName } = useParams()
     const filter = useRef(mailService.getDefaultFilter())
-    console.log('folderName:', folderName)
 
     useEffect(() => {
         filter.current[folderName] = true
@@ -25,7 +24,7 @@ export function MailIndex() {
 
     useEffect(() => {
         loadMails(filter.current)
-    }, [isComposeOpen])
+    }, [])
 
     function loadMails(filter) {
         console.log('filter:', filter)

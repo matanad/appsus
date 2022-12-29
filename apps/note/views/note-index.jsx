@@ -11,9 +11,10 @@ export function NoteIndex() {
 
     useEffect(() => {
         loadNotes()
-    }, [notes])
+    }, [])
 
     function loadNotes() {
+        console.log('loadload');
         noteService.query()
             .then(setNotes)
     }
@@ -33,7 +34,7 @@ export function NoteIndex() {
             <AddNote onAddNewNote={onAddNewNote} />
         </header>
         <main className="note-list">
-            <NoteList notes={notes} onDeleteNote={onDeleteNote} saveNote={onAddNewNote}/>
+            <NoteList notes={notes} onDeleteNote={onDeleteNote} saveNote={onAddNewNote} />
         </main>
     </div>
 

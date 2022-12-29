@@ -73,7 +73,7 @@ function getEmptyNote(type = '', info = { txt: '' }, color = '') {
     return { type, info, color }
 }
 
-function getEmptyTodo(type = '', info = { label: '', todos: [] }, color = '') {
+function getEmptyTodo(type = '', info = { label: '', todos: [''] }, color = '') {
     return { type, info, color }
 }
 

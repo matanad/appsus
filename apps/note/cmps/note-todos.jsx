@@ -8,7 +8,7 @@ export function NoteTodos({ note }) {
             <h1>{label}</h1>
         </header>
         {
-            todos.map((todo =>
+            todos.map(((todo, idx) =>
                 <p key={note.id + todo.txt}>
                     {todo.txt}
                 </p>

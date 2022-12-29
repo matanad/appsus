@@ -34,9 +34,9 @@ export function MailIndex() {
 
 
 
-    return <main className='mail-index'>
+    return <main className='mail-index full'>
         <MailFilter/>
-        <section className="new-mail-container">
+        <section className="new-mail-container main-layout">
         <button onClick={onNewMail}>New Mail</button>
         {isComposeOpen && <MailCompose setIsComposeOpen={setIsComposeOpen} />}
         </section>

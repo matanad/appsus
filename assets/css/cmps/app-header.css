@@ -2,6 +2,7 @@ header.app-header {
     background: var(--main-bg-color);
     border-bottom: 2px solid white;
     box-shadow: rgb(218, 220, 224) 0px -1px 0px 0px inset;
+    margin-bottom: .5rem;
 }
 
 .app-header {

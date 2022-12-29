@@ -7,7 +7,7 @@ export function AppHeader() {
 
     return <header className="app-header">
         <Link to="/">
-            <h3>LOGO!</h3>
+            <div className="logo"/>
         </Link>
         <div className="main-search">
             <span class="material-symbols-outlined">

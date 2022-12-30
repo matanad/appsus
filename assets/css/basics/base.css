@@ -5,6 +5,7 @@
 body {
     margin: 0;
     font-family: Roboto, arial, sans-serif;
+    height: 100vh;
 }
 
 h1,
@@ -30,4 +31,8 @@ img {
 button{
     cursor: pointer;
     color: rgba(0, 0, 0, 0.54);
+}
+
+button:disabled{
+    cursor: not-allowed;
 }

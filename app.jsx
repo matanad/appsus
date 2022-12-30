@@ -7,6 +7,9 @@ import { Home } from "./views/home.jsx"
 import { NoteIndex } from "./apps/note/views/note-index.jsx"
 import { MailIndex } from "./apps/mail/views/mail-index.jsx"
 import { MailDetails } from "./apps/mail/views/mail-details.jsx"
+import { MailCompose } from "./apps/mail/cmps/mail-compose.jsx"
+
+
 
 export function App() {
     return <Router>

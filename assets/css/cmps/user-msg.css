@@ -2,20 +2,38 @@
     background-color: lightgray;
     padding: 1em;
     position: absolute;
-    top: 1em;
-    right: 1em;
+    bottom: 1em;
+    left: 1em;
+    border-radius: 8px;
+    padding-inline-start: 2em;
 }
 
 .user-msg.success {
-    background-color: lightgreen;
+    background-color: var(--clr1);
+    color: var(--clr2);
 }
 
 .user-msg.error {
-    background-color: lightpink;
+    background-color: var(--err);
 }
 
-
-.user-msg button{
+.user-msg button {
+    position: absolute;
     float: right;
-    margin: 1em;
+    top: .1em;
+    left: -.2em;
+    margin: 0em;
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--clr2);
+}
+
+.user-msg span:hover{
+    background-color: var(--gray1-opacity);
+}
+
+.user-msg span{
+    font-size: 1.2em;
+    border-radius: 50%;
+    padding: .1em;
 }

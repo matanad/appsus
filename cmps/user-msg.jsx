@@ -1,9 +1,13 @@
-import { eventBusService } from "../services/event-bus.service.js"
 const { useState, useEffect, useRef } = React
 
-export function UserMsg() {
+import { eventBusService } from "../services/event-bus.service.js"
+import { utilService } from "../services/util.service.js"
 
+export function UserMsg() {
+  const { getAnimatedClass } = utilService
+  const [animation, setAnimation] = useState(null)
   const [msg, setMsg] = useState(null)
+  const elMsg = useRef(null)
   const timeoutIdRef = useRef()
 
   useEffect(() => {
@@ -13,21 +17,37 @@ export function UserMsg() {
         timeoutIdRef.current = null
         clearTimeout(timeoutIdRef.current)
       }
-      timeoutIdRef.current = setTimeout(closeMsg, 3000)
+      timeoutIdRef.current = setTimeout(closeMsg, 2000)
     })
     return unsubscribe
   }, [])
 
+  useEffect(() => {
+    elMsg.current && setAnimation(getAnimatedClass('fadeInUp'))
+
+
+  }, [msg])
+
   function closeMsg() {
-    setMsg(null)
+
+    setAnimation(getAnimatedClass('fadeOutDown'))
+    const timeOut = setTimeout(() => {
+      setMsg(null)
+      clearTimeout(timeOut)
+    }, 1000)
+
   }
 
   if (!msg) return <span></span>
   return (
-    <section className={`user-msg ${msg.type}`}>
-      <button onClick={closeMsg}>x</button>
+    <section ref={elMsg} className={`${animation} user-msg ${msg.type}`}>
+      <button onClick={closeMsg}>
+        <span className="material-symbols-outlined">
+          close
+        </span>
+      </button>
+
       {msg.txt}
     </section>
   )
 }
-

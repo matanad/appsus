@@ -9,6 +9,14 @@ export const utilService = {
     getDayName,
     getMonthName,
     debounce,
+    getAnimatedClass
+}
+
+function getAnimatedClass(animation, duration, delay){
+    let animateClass = `animate__animated animate__${animation} `
+    animateClass += duration && `animate__${duration}`
+    animateClass += delay && `animate__delay-${delay}`
+    return animateClass
 }
 
 function saveToStorage(key, value) {

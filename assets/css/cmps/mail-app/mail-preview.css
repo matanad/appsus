@@ -4,3 +4,15 @@
     opacity: 0;
     transition: opacity .3s;
 }
+
+td.trash-td{
+    width: fit-content;
+}
+
+td.body-td{
+    width: 20vw;
+}
+
+td.subject-td{
+    width: fit-content;
+}

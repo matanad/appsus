@@ -13,9 +13,10 @@ export function LongTxt({ txt, length }) {
     // }
 
     return <article className="long-txt">
-        <p>
+        <h4>
             {getTxtToShow(txt, length)}
             {/* {txt.length > length && <a onClick={onToggleLongTxt}>{isShowMore ? ' Read less' : ' Read more'}</a>} */}
-        </p>
+        </h4>
+        
     </article>
 }

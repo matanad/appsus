@@ -1,8 +1,6 @@
 import { MailPreview } from "./mail-preview.jsx"
 
-export function MailList({ mails }) {
-
-    
+export function MailList({ mails, onMoveToTrash }) {
 
     // function getReadMailsCount() {
     //     let counter = 0
@@ -33,7 +31,7 @@ export function MailList({ mails }) {
             {
                 mails.map(mail =>
                     <tr className={`mail-list-item ${mail.isRead && 'mail-is-read'}`} key={mail.id}>
-                        <MailPreview mail={mail} />
+                        <MailPreview mail={mail} onMoveToTrash={onMoveToTrash} />
                     </tr>
                 )
             }

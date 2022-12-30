@@ -5,7 +5,7 @@ export function NoteTodos({ note, saveNote }) {
 
     function toggleIsDone(idx) {
         todos[idx].doneAt = !todos[idx].doneAt ? Date.now() : null
-        saveNote(note)
+        saveNote(note, false)
     }
 
     return <Fragment>

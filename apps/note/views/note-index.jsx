@@ -33,10 +33,10 @@ export function NoteIndex() {
             })
     }
 
-    function onSaveNote(note) {
+    function onSaveNote(note, isSuccMsgOn = true) {
         noteService.save(note)
             .then(() => {
-                showSuccessMsg('Note saved!')
+                isSuccMsgOn && showSuccessMsg('Note saved!')
                 loadNotes()
             })
             .catch(err => {

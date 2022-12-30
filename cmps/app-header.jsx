@@ -18,7 +18,11 @@ export function AppHeader() {
 
     return <header className="app-header">
         <Link to="/">
-            <div className="logo"/>
+            <div 
+            className={`
+            logo ${pathname.includes('/note') && 'note-logo'}
+            ${pathname.includes('/mail') && 'mail-logo'}
+            `}/>
         </Link>
         {pathname.includes('/mail') && <MailFilter/>}
         {/* <div className="main-search">

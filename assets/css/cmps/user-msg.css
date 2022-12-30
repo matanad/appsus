@@ -14,7 +14,8 @@
 }
 
 .user-msg.error {
-    background-color: var(--err);
+    background-color: var(--error);
+    color: whitesmoke;
 }
 
 .user-msg button {
@@ -28,11 +29,15 @@
     color: var(--clr2);
 }
 
-.user-msg span:hover{
+.user-msg.error button {
+    color: whitesmoke;
+}
+
+.user-msg span:hover {
     background-color: var(--gray1-opacity);
 }
 
-.user-msg span{
+.user-msg span {
     font-size: 1.2em;
     border-radius: 50%;
     padding: .1em;

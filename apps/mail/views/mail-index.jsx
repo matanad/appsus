@@ -7,7 +7,6 @@ import { eventBusService, showErrorMsg, showSuccessMsg } from "../../../services
 //jsx
 import { MailCompose } from "../cmps/mail-compose.jsx"
 import { MailList } from "../cmps/mail-list.jsx"
-import { MailFilter } from "../cmps/mail-filter.jsx"
 import { MailSideFiler } from "../cmps/mail-side-filter.jsx"
 import { UserMsg } from "../../../cmps/user-msg.jsx"
 
@@ -15,7 +14,7 @@ export function MailIndex() {
     const [isComposeOpen, setIsComposeOpen] = useState(false)
     const [mails, setMails] = useState([])
     const filter = useRef(mailService.getDefaultFilter())
-    const { folderName } = useParams() ? useParams() : '/inbox'
+    const { folderName } = useParams()
 
 
     useEffect(() => {
@@ -81,18 +80,18 @@ export function MailIndex() {
         
     }
 
-    // function onEnvelopeClick(mail){
-    //     mailService.setReadUnRead(mail)
-    //     .then(() => {
-    //         // let newFilter = mailService.getDefaultFilter()
-    //         // newFilter[folderName] = true
-    //         // loadMails(newFilter)
-    //     })
-    //     .catch((err) => {
-    //         console.log('Read toggle failed error: ', err, 'mail: ', mail)
-    //         showErrorMsg('Something went wrong')
-    //     })
-    // }
+    function onEnvelopeClick(mail){
+        mailService.setReadUnRead(mail)
+        .then(() => {
+            let newFilter = mailService.getDefaultFilter()
+            newFilter[folderName] = true
+            loadMails(newFilter)
+        })
+        .catch((err) => {
+            console.log('Read toggle failed error: ', err, 'mail: ', mail)
+            showErrorMsg('Something went wrong')
+        })
+    }
 
 
 

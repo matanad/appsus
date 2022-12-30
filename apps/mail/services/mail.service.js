@@ -23,7 +23,6 @@ export const mailService = {
 function query(filterBy = getDefaultFilter()) {
   return storageService.query(MAIL_KEY)
     .then(mails => {
-      console.log('mails:', mails)
       if (!filterBy.isTrash) {
         mails = mails.filter(mail => !mail.isTrash)
       }
@@ -95,9 +94,9 @@ function moveToTrash(mail) {
 
 function setReadUnRead(mail) {
   if (mail.isRead === 'read') {
-    mail.isRead === 'unread'
-  } else {
-    mail.isRead === 'read'
+    mail.isRead = 'unread'
+  } else if (mail.isRead === 'unread') {
+    mail.isRead = 'read'
   }
   return save(mail)
 }

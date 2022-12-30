@@ -7,20 +7,13 @@ import { mailService } from "../services/mail.service.js"
 import { LongTxt } from "./long-txt.jsx"
 
 export function MailPreview({ mail, onTrashClick, onStarClick, onEnvelopeClick }) {
-
-    const prevFilterType = useRef('')
-    const [filterByToEdit, setFilterByToEdit] = useState(mailService.getDefaultFilter())
     const { folderName } = useParams()
     const [isStarred, setIsStarred] = useState(false)
     const [isEnvelope, setEnvelope] = useState(false)
 
     const star = mail.isStarred ? 'is-starred' : 'un-starred'
-
     const envelope = isEnvelope ? 'drafts' : 'mail'
 
-    console.log('testtttttt:')
-
-    onEnvelopeClick(mail);
     return <Fragment>
         {/* From */}
         <td><Link to={`/mail/${folderName + '/' + mail.id}`}><h4>{mail.fullName}</h4></Link></td>

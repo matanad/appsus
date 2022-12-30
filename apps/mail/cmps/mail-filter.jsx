@@ -9,7 +9,6 @@ export function MailFilter() {
     // const prevFilterType = useRef('')
     
     useEffect(() => {
-        console.log('filterByToEdit:', filterByToEdit)
         eventBusService.emit('loadMails',filterByToEdit)
     }, [filterByToEdit])
 

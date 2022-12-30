@@ -18,12 +18,12 @@ export function NoteDetails({ note, getColorClass, onDeleteNote, }) {
             type={note.type} 
             isDetail={true}/>
         <div className="btn-controls">
-            <button className="btn-delete" onClick={() => onDeleteNote(note.id)}>
+            <button className="btn btn-delete" onClick={() => onDeleteNote(note.id)}>
                 <span className="material-symbols-outlined">
                     delete
                 </span>
             </button>
-            <button onClick={() => setIsPalletOpen(revValue => !revValue)}>
+            <button className="btn" onClick={() => setIsPalletOpen(revValue => !revValue)}>
                 <span className="material-symbols-outlined">
                     palette
                 </span>

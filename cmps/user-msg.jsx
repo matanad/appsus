@@ -17,25 +17,25 @@ export function UserMsg() {
       if (timeoutIdRef.current) {
         timeoutIdRef.current = null
         clearTimeout(timeoutIdRef.current)
-        
+        clearTimeout(timeoutCloseIdRef.current)
+
       }
-      timeoutIdRef.current = setTimeout(closeMsg, 2000)
+      timeoutIdRef.current = setTimeout(closeMsg, 3000)
     })
     return unsubscribe
   }, [])
-  
+
   useEffect(() => {
-    elMsg.current && setAnimation(getAnimatedClass('fadeInUp'))
     timeoutCloseIdRef.current && clearTimeout(timeoutCloseIdRef.current)
+    elMsg.current && setAnimation(getAnimatedClass('fadeInUp'))
   }, [msg])
 
   function closeMsg() {
-
     setAnimation(getAnimatedClass('fadeOutDown'))
     timeoutCloseIdRef.current = setTimeout(() => {
       setMsg(null)
-      clearTimeout(timeoutCloseIdRef.current)
-    }, 1000)
+      timeoutCloseIdRef.current && clearTimeout(timeoutCloseIdRef.current)
+    }, 800)
 
   }
 

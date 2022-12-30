@@ -24,7 +24,7 @@ export function NoteIndex() {
         currentTarget.disabled = true
         noteService.remove(noteId)
             .then(() => {
-                showSuccessMsg('Note deleted!')
+                showSuccessMsg('Note deleted.')
                 loadNotes()
             })
             .catch(err => {
@@ -36,7 +36,7 @@ export function NoteIndex() {
     function onSaveNote(note, isSuccMsgOn = true) {
         noteService.save(note)
             .then(() => {
-                isSuccMsgOn && showSuccessMsg('Note saved!')
+                isSuccMsgOn && showSuccessMsg('Note saved.')
                 loadNotes()
             })
             .catch(err => {
@@ -49,9 +49,14 @@ export function NoteIndex() {
         <header>
             <AddNote onAddNewNote={onSaveNote} />
         </header>
-        <main className="note-list">
-            <NoteList notes={notes} onDeleteNote={onDeleteNote} saveNote={onSaveNote} />
-        </main>
+        <div className="notes-container">
+            <div className="note-list-holder">
+            <h2>OTHER</h2>
+                <main className="note-list">
+                    <NoteList notes={notes} onDeleteNote={onDeleteNote} saveNote={onSaveNote} />
+                </main>
+            </div>
+        </div>
         <UserMsg />
     </div>
 

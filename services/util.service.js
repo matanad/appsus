@@ -12,10 +12,10 @@ export const utilService = {
     getAnimatedClass
 }
 
-function getAnimatedClass(animation, duration, delay){
+function getAnimatedClass(animation, duration, delay) {
     let animateClass = `animate__animated animate__${animation} `
-    animateClass += duration && `animate__${duration}`
-    animateClass += delay && `animate__delay-${delay}`
+    animateClass += duration ? `animate__${duration}` : ''
+    animateClass += delay ? `animate__delay-${delay}` : ''
     return animateClass
 }
 
@@ -28,11 +28,11 @@ function loadFromStorage(key) {
     return (data) ? JSON.parse(data) : undefined
 }
 
-function debounce(func, timeout = 500){
+function debounce(func, timeout = 500) {
     let timer
     return (...args) => {
-      clearTimeout(timer)
-      timer = setTimeout(() => { func.apply(this, args) }, timeout)
+        clearTimeout(timer)
+        timer = setTimeout(() => { func.apply(this, args) }, timeout)
     }
 }
 

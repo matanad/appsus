@@ -81,18 +81,18 @@ export function MailIndex() {
         
     }
 
-    function onEnvelopeClick(mail){
-        mailService.setReadUnRead(mail)
-        .then(() => {
-            // let newFilter = mailService.getDefaultFilter()
-            // newFilter[folderName] = true
-            // loadMails(newFilter)
-        })
-        .catch((err) => {
-            console.log('Read toggle failed error: ', err, 'mail: ', mail)
-            showErrorMsg('Something went wrong')
-        })
-    }
+    // function onEnvelopeClick(mail){
+    //     mailService.setReadUnRead(mail)
+    //     .then(() => {
+    //         // let newFilter = mailService.getDefaultFilter()
+    //         // newFilter[folderName] = true
+    //         // loadMails(newFilter)
+    //     })
+    //     .catch((err) => {
+    //         console.log('Read toggle failed error: ', err, 'mail: ', mail)
+    //         showErrorMsg('Something went wrong')
+    //     })
+    // }
 
 
 

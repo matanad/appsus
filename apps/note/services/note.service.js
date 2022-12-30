@@ -24,7 +24,7 @@ const gNotes = [
         type: "note-img",
         color: '',
         info: {
-            url: "https://scontent.ftlv5-1.fna.fbcdn.net/v/t1.6435-9/44951172_1950721595222915_1800732169186836480_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=J2Ja2HgwKl0AX-xMLrv&_nc_ht=scontent.ftlv5-1.fna&oh=00_AfAY7BgEn1r2ay_RpFii0xR1_geuw0fxfCQs7zLGbnsvAA&oe=63D3B821",
+            url: "https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg",
             title: "Bobi and Me"
         },
         style: { backgroundColor: "#00d" }

@@ -9,6 +9,7 @@ export function UserMsg() {
   const [msg, setMsg] = useState(null)
   const elMsg = useRef(null)
   const timeoutIdRef = useRef()
+  const timeoutCloseIdRef = useRef()
 
   useEffect(() => {
     const unsubscribe = eventBusService.on('show-user-msg', (msg) => {
@@ -16,22 +17,22 @@ export function UserMsg() {
       if (timeoutIdRef.current) {
         timeoutIdRef.current = null
         clearTimeout(timeoutIdRef.current)
+        
       }
       timeoutIdRef.current = setTimeout(closeMsg, 2000)
     })
     return unsubscribe
   }, [])
-
+  
   useEffect(() => {
     elMsg.current && setAnimation(getAnimatedClass('fadeInUp'))
-
-
+    timeoutCloseIdRef.current && clearTimeout(timeoutCloseIdRef.current)
   }, [msg])
 
   function closeMsg() {
 
     setAnimation(getAnimatedClass('fadeOutDown'))
-    const timeOut = setTimeout(() => {
+    timeoutCloseIdRef.current = setTimeout(() => {
       setMsg(null)
       clearTimeout(timeOut)
     }, 1000)

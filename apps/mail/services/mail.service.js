@@ -43,24 +43,22 @@ function query(filterBy = getDefaultFilter()) {
     })
 }
 
-// function query() {
-//   return storageService.query(MAIL_KEY)
-// }
-
 function getDefaultFilter() {
-  return { byIsRead: false, byIsNotRead: false, txt: '', isTrash: false }
+  return { txt: '', isRead: '', isTrash: false, isStarred: false }
 }
 
 function getEmptyMail(to = '', subject = '', body = '') {
   return {
+    to: '',
     subject: '',
     body: '',
     isRead: false,
     sentAt: Date.now(),
-    to: '',
     from: 'Me',
     isTrash: false,
     folder: ['new'],
+    isSrarred: false,
+
   }
 }
 
@@ -94,6 +92,7 @@ function _createMails() {
     mails = [
       {
         id: 'e101',
+        fullName: 'Wix',
         subject: 'Miss you!',
         body: 'Would love to catch up sometimes',
         isRead: false,
@@ -106,6 +105,7 @@ function _createMails() {
       },
       {
         id: 'e102',
+        fullName: 'Dana',
         subject: 'Hi there',
         body: 'how are toy doing?',
         isRead: false,
@@ -118,8 +118,22 @@ function _createMails() {
       },
       {
         id: 'e103',
+        fullName: 'Matan',
         subject: 'fix the door',
         body: 'you need to fix it',
+        isRead: false,
+        sentAt: 1672233833003,
+        to: 'momo@momo.com',
+        from: 'Matan',
+        isTrash: false,
+        folder: ['new', 'important',],
+        removedAt: null,
+      },
+      {
+        id: 'e104',
+        fullName: 'Sharon',
+        subject: 'Importent subject',
+        body: 'enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla ante, iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egesta',
         isRead: false,
         sentAt: 1672233833003,
         to: 'momo@momo.com',
@@ -133,8 +147,6 @@ function _createMails() {
     utilService.saveToStorage(MAIL_KEY, mails)
   }
 }
-
-
 
 function get(mailId) {
   return storageService.get(MAIL_KEY, mailId)

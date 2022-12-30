@@ -8,21 +8,10 @@ export function MailFolderList() {
     const [filterByToEdit, setFilterByToEdit] = useState(mailService.getDefaultFilter())
     const prevFilterType = useRef('')
     const {folderName} = useParams()
-    console.log('folderName:', folderName)
-
 
     useEffect(() => {
-        eventBusService.emit('loadMails', filterByToEdit)
+        // eventBusService.emit('loadMails', filterByToEdit)
     }, [filterByToEdit])
-
-    function onFolderClick(value) {
-        if (prevFilterType.current) setFilterByToEdit(prevFilter => ({ ...prevFilter, [prevFilterType.current]: false }))
-        prevFilterType.current = value
-        console.log('prevFilterType.current:', prevFilterType.current)
-        if (value) {
-            setFilterByToEdit(prevFilter => ({ ...prevFilter, [value]: !prevFilter.value }))
-        }
-    }
 
     return <section className="side-nav-folders">
         

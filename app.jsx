@@ -18,11 +18,11 @@ export function App() {
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/mail/" element={<MailIndex />} />
-                <Route path="/mail/:folderName" element={<MailIndex />} />
-                <Route path="/mail/:mailId" element={<MailDetails />} />
-                <Route path="/mail/compose" element={<MailCompose />} />
                 <Route path="/note" element={<NoteIndex />} />
+                {/* Mail App */}
+                <Route path="/mail" element={<MailIndex />} />
+                <Route path="/mail/:folderName" element={<MailIndex />} />
+                <Route path="/mail/:folderName/:mailId" element={<MailDetails />} />
             </Routes>
         </section>
     </Router>

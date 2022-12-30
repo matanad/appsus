@@ -1,12 +1,8 @@
-const { useState, useEffect, useRef } = React
-// const { useNavigate, useParams, Link } = ReactRouterDOM
-
+const { useState } = React
 import { mailService } from "../services/mail.service.js"
 
-export function MailCompose({ setIsComposeOpen }) {
-
+export function MailCompose({ setIsComposeOpen, loadMails }) {
     const [newMail, setNewMail] = useState(mailService.getEmptyMail())
-    // const navigate = useNavigate()
 
     function handleChange({ target }) {
         let { value, name: field } = target
@@ -17,6 +13,7 @@ export function MailCompose({ setIsComposeOpen }) {
         ev.preventDefault()
         mailService.save(newMail).then((mail) => {
             setIsComposeOpen()
+            loadMails()
             // showSuccessMsg('Mail sent')
             // navigate('/mail/')
         })
@@ -24,14 +21,12 @@ export function MailCompose({ setIsComposeOpen }) {
 
     return <div className="mail-compose">
 
-
         <form onSubmit={onAddMail} className='compose-mail-form'>
 
             <header className="form-header flex">
                 <div>New Message</div>
             </header>
 
-            {/* <label htmlFor="mail-to">To</label> */}
             <input type="email"
                 name="to"
                 id="mail-to"
@@ -39,7 +34,6 @@ export function MailCompose({ setIsComposeOpen }) {
                 onChange={handleChange}
             />
 
-            {/* <label htmlFor="mail-Subject">Subject</label> */}
             <input type="text"
                 name="subject"
                 id="mail-Subject"
@@ -47,7 +41,6 @@ export function MailCompose({ setIsComposeOpen }) {
                 onChange={handleChange}
             />
 
-            {/* <label htmlFor="body">Content</label> */}
             <textarea type="text"
                 name="body"
                 id="body"

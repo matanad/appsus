@@ -131,3 +131,36 @@
 .note .todo.done {
     text-decoration: line-through;
 }
+
+@media (max-width: 1050px) {
+    .note-list {
+      columns: 3;
+      column-gap: 1rem;
+      margin: 0 2rem;
+    }
+  }
+  
+  @media (max-width: 790px) {
+    .note-list {
+      columns: 2;
+      column-gap: 1rem;
+      margin: 0 2rem;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .note-list {
+      columns: 1;
+      column-gap: 1rem;
+      margin: 0 2rem;
+    }
+  
+    .notes-container {
+      width: 100%;
+    }
+  
+    .note-app {
+      width: 100vw;
+      overflow-x: hidden;
+    }
+  }

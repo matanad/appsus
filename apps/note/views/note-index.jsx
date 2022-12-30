@@ -24,7 +24,7 @@ export function NoteIndex() {
         currentTarget.disabled = true
         noteService.remove(noteId)
             .then(() => {
-                showSuccessMsg('Note deleted!')
+                showSuccessMsg('Note deleted.')
                 loadNotes()
             })
             .catch(err => {
@@ -36,7 +36,7 @@ export function NoteIndex() {
     function onSaveNote(note, isSuccMsgOn = true) {
         noteService.save(note)
             .then(() => {
-                isSuccMsgOn && showSuccessMsg('Note saved!')
+                isSuccMsgOn && showSuccessMsg('Note saved.')
                 loadNotes()
             })
             .catch(err => {

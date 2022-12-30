@@ -1,7 +1,6 @@
 .note-app {
     max-width: 1080px;
     margin: 0 auto;
-
 }
 
 .notes-container {
@@ -10,7 +9,14 @@
     align-items: center;
 }
 
-.note-list-holder {}
+.note-list-holder h2{
+    font-size: .6875rem;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: 1rem;
+    letter-spacing: .07272727em;
+    margin: 32px 32px 8px;
+}
 
 .note-list {
     columns: 4;
@@ -24,7 +30,7 @@
     width: 240px;
     min-width: 200px;
     border-radius: 8px;
-    padding: 1em 1em 3em 1em;
+    padding: 1em 1em 2em 1em;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -61,17 +67,12 @@
 
 .note .btn-controls {
     position: absolute;
-    bottom: 0.5em;
+    bottom: -.5em;
     opacity: 0;
 }
 
 .note:hover>* {
     opacity: 1;
-}
-
-.note button {
-    background-color: transparent;
-    border: none;
 }
 
 .editable {

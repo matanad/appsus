@@ -53,13 +53,13 @@ export function AddNote({ onAddNewNote }) {
                 type="text"
                 placeholder="Enter a url..."
             />}
-            <button>Submit</button>
-            <button className="btn-todos" type="button" onClick={() => onNoteType('note-todos')}>
+            <button className="btn btn-submit">Submit</button>
+            <button className="btn btn-todos" type="button" onClick={() => onNoteType('note-todos')}>
                 <span className="material-symbols-outlined" onClick={() => onNoteType('note-todos')}>
                     check_box
                 </span>
             </button>
-            <button className="btn-img" type="button" onClick={() => onNoteType('note-img')}>
+            <button className="btn btn-img" type="button" onClick={() => onNoteType('note-img')}>
                 <span className="material-symbols-outlined">
                     image
                 </span>

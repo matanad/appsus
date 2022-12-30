@@ -22,12 +22,12 @@ export function NotePreview({ note, onDeleteNote, saveNote }) {
             type={note.type}
             saveNote={saveNote} />
         <div className="btn-controls">
-            <button className="btn-delete" onClick={(ev) => onDeleteNote(ev, note.id)}>
+            <button className="btn btn-delete" onClick={(ev) => onDeleteNote(ev, note.id)}>
                 <span className="material-symbols-outlined">
                     delete
                 </span>
             </button>
-            <button onClick={() => setIsPalletOpen(revValue => !revValue)}>
+            <button className="btn" onClick={() => setIsPalletOpen(revValue => !revValue)}>
                 <span className="material-symbols-outlined">
                     palette
                 </span>

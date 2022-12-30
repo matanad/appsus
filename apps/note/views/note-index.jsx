@@ -50,8 +50,8 @@ export function NoteIndex() {
             <AddNote onAddNewNote={onSaveNote} />
         </header>
         <div className="notes-container">
-            <h2>OTHER</h2>
             <div className="note-list-holder">
+            <h2>OTHER</h2>
                 <main className="note-list">
                     <NoteList notes={notes} onDeleteNote={onDeleteNote} saveNote={onSaveNote} />
                 </main>

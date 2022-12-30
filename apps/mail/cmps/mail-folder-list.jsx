@@ -7,49 +7,49 @@ import { eventBusService } from "../../../services/event-bus.service.js"
 export function MailFolderList() {
     const [filterByToEdit, setFilterByToEdit] = useState(mailService.getDefaultFilter())
     const prevFilterType = useRef('')
-    const {folderName} = useParams()
+    const { folderName } = useParams()
 
     useEffect(() => {
         // eventBusService.emit('loadMails', filterByToEdit)
     }, [filterByToEdit])
 
-    return <section className="side-nav-folders">
-        
+    return <section className="mail-folder-list">
+
         <NavLink to={'/mail/inbox'}>
-        <div className="inbox">
-            <span className="material-symbols-outlined">
-                inbox
-            </span>
-            Inbox
-        </div>
+            <div className="inbox">
+                <span className="material-symbols-outlined">
+                    inbox
+                </span>
+                Inbox
+            </div>
         </NavLink>
 
         <NavLink to={'/mail/isStarred'}>
-        <div className="starred">
-            <span className="material-symbols-outlined">
-                star
-            </span>
-            Starred
-        </div>
+            <div className="starred">
+                <span className="material-symbols-outlined">
+                    star
+                </span>
+                Starred
+            </div>
         </NavLink>
 
         <NavLink to={'/mail/sent'}>
-        <div className="sent">
-            <span className="material-symbols-outlined">
-                send
-            </span>
-            Sent
-        </div>
+            <div className="sent">
+                <span className="material-symbols-outlined">
+                    send
+                </span>
+                Sent
+            </div>
         </NavLink>
 
         <NavLink to={'/mail/isTrash'}>
-        {/* onClick={() => onFolderClick('isTrash')} className='trash' */}
-        <div className="trash">
-            <span className="material-symbols-outlined">
-                delete
-            </span>
-            Trash
-        </div>
+            {/* onClick={() => onFolderClick('isTrash')} className='trash' */}
+            <div className="trash">
+                <span className="material-symbols-outlined">
+                    delete
+                </span>
+                Trash
+            </div>
         </NavLink>
 
     </section>

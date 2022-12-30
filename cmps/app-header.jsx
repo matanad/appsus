@@ -1,41 +1,32 @@
 const { Link, useLocation } = ReactRouterDOM
-const { useState} = React
+const { useState } = React
 
 import { MailFilter } from "../apps/mail/cmps/mail-filter.jsx"
 import { AppsMenu } from "./apps-menu.jsx"
 
 export function AppHeader() {
-    const {pathname} = useLocation()
-    console.log('app:', pathname)
+    const { pathname } = useLocation()
 
+    const [isAppsMenuOpen, setIsAppsMenuOpen] = useState(true)
 
-    const  [isAppsMenuOpen, setIsAppsMenuOpen] = useState(true)
-
-
-    function onOpenAppsMenu(){
-        setIsAppsMenuOpen((prev)=>!prev)
+    function onOpenAppsMenu() {
+        setIsAppsMenuOpen((prev) => !prev)
     }
 
     return <header className="app-header">
         <Link to="/">
-            <div 
-            className={`
+            <div
+                className={`
             logo ${pathname.includes('/note') && 'note-logo'}
             ${pathname.includes('/mail') && 'mail-logo'}
-            `}/>
+            `} />
         </Link>
-        {pathname.includes('/mail') && <MailFilter/>}
-        {/* <div className="main-search">
-            <span className="material-symbols-outlined">
-                search
-            </span>
-            <input placeholder="Search Here" />
-        </div> */}
+        {pathname.includes('/mail') && <MailFilter />}
         <nav className="apps-menu-btn">
             <span onClick={onOpenAppsMenu} className="material-symbols-outlined">
                 apps
             </span>
-            {isAppsMenuOpen && <AppsMenu/>}
+            {isAppsMenuOpen && <AppsMenu />}
         </nav>
     </header>
 }

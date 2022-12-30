@@ -1,8 +1,10 @@
 const { useState, useEffect } = React
 
+import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 import { AddNote } from "../cmps/add-note.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
-import { NotePreview } from "../cmps/note-preview.jsx"
+import { UserMsg } from "../../../cmps/user-msg.jsx"
+
 
 import { noteService } from "../services/note.service.js"
 
@@ -14,19 +16,33 @@ export function NoteIndex() {
     }, [])
 
     function loadNotes() {
-        console.log('loadload');
         noteService.query()
             .then(setNotes)
     }
 
-    function onDeleteNote(noteId) {
+    function onDeleteNote({ currentTarget }, noteId) {
+        currentTarget.disabled = true
         noteService.remove(noteId)
-            .then(loadNotes)
+            .then(() => {
+                showSuccessMsg('Note deleted!')
+                loadNotes()
+            })
+            .catch(err => {
+                showErrorMsg("Somthing went wrong")
+                console.log(`Save note failed. error: ${err} note: ${note}`)
+            })
     }
 
     function onSaveNote(note) {
         noteService.save(note)
-            .then(loadNotes)
+            .then(() => {
+                showSuccessMsg('Note saved!')
+                loadNotes()
+            })
+            .catch(err => {
+                showErrorMsg("Somthing went wrong")
+                console.log(`Save note failed. error: ${err} note: ${note}`)
+            })
     }
 
     return <div className="note-app">
@@ -36,6 +52,7 @@ export function NoteIndex() {
         <main className="note-list">
             <NoteList notes={notes} onDeleteNote={onDeleteNote} saveNote={onSaveNote} />
         </main>
+        <UserMsg />
     </div>
 
 

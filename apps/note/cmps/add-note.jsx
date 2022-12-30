@@ -7,7 +7,6 @@ export function AddNote({ onAddNewNote }) {
     const [newNote, setNewNote] = useState(noteService.getEmptyNote())
     const [noteType, setNoteType] = useState('note-txt')
     const elInput = useRef(null)
-    console.log('render render');
 
 
     function handleChange({ target }) {
@@ -30,6 +29,11 @@ export function AddNote({ onAddNewNote }) {
         onAddNewNote(newNote)
     }
 
+    function onNoteType(type) {
+        if (type === noteType) setNoteType('note-txt')
+        else setNoteType(type)
+    }
+
     return <section className="add-note" >
         <form onSubmit={onSubmitNote}>
             {noteType === 'note-txt' && <input
@@ -43,19 +47,19 @@ export function AddNote({ onAddNewNote }) {
                 getEmptyTodo={noteService.getEmptyTodo}
                 setNewNote={setNewNote}
             />}
-             {noteType === 'note-img' && <input
+            {noteType === 'note-img' && <input
                 onChange={handleChange}
                 name="url"
                 type="text"
                 placeholder="Enter a url..."
             />}
             <button>Submit</button>
-            <button className="btn-todos" type="button" onClick={() => setNoteType('note-todos')}>
-                <span className="material-symbols-outlined" onClick={() => setNoteType('note-todos')}>
+            <button className="btn-todos" type="button" onClick={() => onNoteType('note-todos')}>
+                <span className="material-symbols-outlined" onClick={() => onNoteType('note-todos')}>
                     check_box
                 </span>
             </button>
-            <button className="btn-img" type="button" onClick={() => setNoteType('note-img')}>
+            <button className="btn-img" type="button" onClick={() => onNoteType('note-img')}>
                 <span className="material-symbols-outlined">
                     image
                 </span>

@@ -1,6 +1,7 @@
 import { NoteImg } from "./note-img.jsx"
 import { NoteTodos } from "./note-todos.jsx"
 import { NoteTxt } from "./note-txt.jsx"
+import { NoteVideo } from "./note-video.jsx"
 
 export function DynamicCmp(props) {
     switch (props.type) {
@@ -10,5 +11,7 @@ export function DynamicCmp(props) {
             return <NoteImg {...props} />
         case 'note-todos':
             return <NoteTodos {...props} />
+        case 'note-video':
+            return <NoteVideo {...props} />
     }
 }

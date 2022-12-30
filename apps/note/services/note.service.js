@@ -20,7 +20,8 @@ const gNotes = [
         info: { txt: "Fullstack Me Baby!" }
     },
     {
-        id: "n102", type: "note-img",
+        id: "n102",
+        type: "note-img",
         color: '',
         info: {
             url: "https://scontent.ftlv5-1.fna.fbcdn.net/v/t1.6435-9/44951172_1950721595222915_1800732169186836480_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=J2Ja2HgwKl0AX-xMLrv&_nc_ht=scontent.ftlv5-1.fna&oh=00_AfAY7BgEn1r2ay_RpFii0xR1_geuw0fxfCQs7zLGbnsvAA&oe=63D3B821",
@@ -43,6 +44,18 @@ const gNotes = [
                 doneAt: 187111111
             }
             ]
+        }
+    },
+    {
+        id: "n104",
+        type: "note-video",
+        color: '',
+        info: {
+            url: "",
+            title: "Let's Dance!"
+        },
+        style: {
+            backgroundColor: "#00d"
         }
     }
 ]

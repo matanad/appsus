@@ -1,6 +1,6 @@
 import { MailPreview } from "./mail-preview.jsx"
 
-export function MailList({ mails, onMoveToTrash }) {
+export function MailList({ mails, onTrashClick, onStarClick, onEnvelopeClick }) {
 
     // function getReadMailsCount() {
     //     let counter = 0
@@ -23,18 +23,16 @@ export function MailList({ mails, onMoveToTrash }) {
     // }
 
     return <section className="mail-table-container ">
-        {/* <h1>Read mails: {getReadMailsCount()}</h1> */}
-        {/* <h1>Unread mails: {getUnReadMailsCount()}</h1> */}
 
         <table className="mail-table ">
             <tbody className="">
-            {
-                mails.map(mail =>
-                    <tr className={`mail-list-item ${mail.isRead && 'mail-is-read'}`} key={mail.id}>
-                        <MailPreview mail={mail} onMoveToTrash={onMoveToTrash} />
-                    </tr>
-                )
-            }
+                {
+                    mails.map(mail =>
+                        <tr className={`mail-list-item ${(mail.isRead === 'read') && 'mail-is-read'}`} key={mail.id}>
+                            <MailPreview mail={mail} onTrashClick={onTrashClick} onStarClick={onStarClick} onEnvelopeClick={onEnvelopeClick} />
+                        </tr>
+                    )
+                }
             </tbody>
         </table>
     </section>

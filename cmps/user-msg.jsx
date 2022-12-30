@@ -34,7 +34,7 @@ export function UserMsg() {
     setAnimation(getAnimatedClass('fadeOutDown'))
     timeoutCloseIdRef.current = setTimeout(() => {
       setMsg(null)
-      clearTimeout(timeOut)
+      clearTimeout(timeoutCloseIdRef.current)
     }, 1000)
 
   }

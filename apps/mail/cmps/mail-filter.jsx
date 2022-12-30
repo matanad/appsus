@@ -9,45 +9,26 @@ export function MailFilter() {
     // const prevFilterType = useRef('')
     
     useEffect(() => {
-        // console.log('filterByToEdit:', filterByToEdit)
+        console.log('filterByToEdit:', filterByToEdit)
         eventBusService.emit('loadMails',filterByToEdit)
     }, [filterByToEdit])
 
-    function handleSelectChange({ target }) {
+    function handleChange({ target }) {
         let { value } = target
-        // if (prevFilterType.current) setFilterByToEdit(prevFilter => ({ ...prevFilter, [prevFilterType.current]: false }))
-        // prevFilterType.current = value
-        // if (value) {
-        //     setFilterByToEdit(prevFilter => ({ ...prevFilter, [value]: !prevFilter.value }))
-        // }
-        console.log(target.name,value);
-    }
-
-    function handleTitleChange({ target }) {
-        let { value } = target
-        console.log(target.name,value);
         setFilterByToEdit(prevFilter=>({...prevFilter,[target.name]:value}))
-        // setFilterByToEdit((prevFilter) => {
-        //     return { ...prevFilter, txt: value }
-        // })
-    }
-
-    function onSubmitFilter(ev) {
-        ev.preventDefault()
-        onSetFilter(filterByToEdit)
     }
 
     return <section className="mail-top-filter ">
-        <form onSubmit={onSubmitFilter} className="main-search">
+        <form className="main-search">
             <input type="text"
                 name="txt"
                 id="subject-filter"
                 placeholder="Search Email by subject..."
                 ref={elInputRef}
                 value={filterByToEdit.txt}
-                onChange={handleTitleChange} />
+                onChange={handleChange} />
 
-            <select name="isRead" id="is-read-filter" type='text' onChange={handleTitleChange}>
+            <select name="isRead" id="is-read-filter" type='text' onChange={handleChange}>
                 <option value=''>All</option>
                 <option value='read'>Read</option>
                 <option value='unread'>Uread</option>

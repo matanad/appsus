@@ -5,8 +5,16 @@
     color: inherit;
     padding: .5rem .1rem 0 1rem;
     border-radius: 0 2em 2em 0;
+    display: flex;
+    height: 32px;
+    gap: .5em;
+}
+
+.mail-folder-list span{
+    padding-bottom: .25rem;
 }
 
 .mail-folder-list .active {
     background-color: var(--gray2-opacity);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px inset;
 }

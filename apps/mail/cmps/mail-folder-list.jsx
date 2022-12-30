@@ -16,38 +16,38 @@ export function MailFolderList() {
     return <section className="mail-folder-list">
 
         <NavLink to={'/mail/inbox'}>
-            <div className="inbox">
                 <span className="material-symbols-outlined">
                     inbox
                 </span>
+            <div className="inbox">
                 Inbox
             </div>
         </NavLink>
 
         <NavLink to={'/mail/isStarred'}>
-            <div className="starred">
                 <span className="material-symbols-outlined">
                     star
                 </span>
+            <div className="starred">
                 Starred
             </div>
         </NavLink>
 
         <NavLink to={'/mail/sent'}>
-            <div className="sent">
                 <span className="material-symbols-outlined">
                     send
                 </span>
+            <div className="sent">
                 Sent
             </div>
         </NavLink>
 
         <NavLink to={'/mail/isTrash'}>
             {/* onClick={() => onFolderClick('isTrash')} className='trash' */}
-            <div className="trash">
                 <span className="material-symbols-outlined">
                     delete
                 </span>
+            <div className="trash">
                 Trash
             </div>
         </NavLink>

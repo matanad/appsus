@@ -25,3 +25,9 @@ div .compose-btn {
 div .compose-btn:not(span){
     line-height: 1.5;
 }
+
+@media (max-width: 600px) {
+    .compose-btn .compose{
+        display: none;
+    }
+}

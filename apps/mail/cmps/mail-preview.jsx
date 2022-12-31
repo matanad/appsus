@@ -34,8 +34,7 @@ export function MailPreview({ mail, onTrashClick, onStarClick, onEnvelopeClick }
                         {mail.subject}
                     </span>
                     <span className="mail-body-preview">
-                        <LongTxt txt={mail.body} length={200} />
-                        {/* {mail.body} */}
+                        {mail.body}
                     </span>
                 </p>
             </Link>

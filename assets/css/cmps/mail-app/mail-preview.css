@@ -53,6 +53,9 @@
     grid-template-columns: 3rem minmax(5rem, 10rem) minmax(3rem, 100%) minmax(auto, 5rem) minmax(auto, 8rem);
     align-items: center;
 }
+.date-h4{
+    margin-top: 14px;
+}
 
 .mail-list-item.mail-is-read {
     background-color: rgba(168, 168, 168, 0.622);

@@ -57,9 +57,8 @@ export function NoteDetails({ }) {
                  onDeleteNote={onDeleteNote}
                   saveNote={onSaveNote}
                    isDetailed={true} 
+                   onClose={onClose}
                    />
-
-                <button className="btn btn-close" onClick={onClose}>Close</button>
             </div>
         </div>
     </div>

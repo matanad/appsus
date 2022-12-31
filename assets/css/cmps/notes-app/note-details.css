@@ -8,6 +8,7 @@
     justify-content: center;
     z-index: 5001;
     padding-top: 4em;
+    left: 0;
 }
 
 .note-details .note {
@@ -33,8 +34,11 @@
     font-size: 1.5em;
 }
 
+.note-details .btn-controls{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 .note-details .btn-close{
-    position: absolute;
-    right: 3rem;
-    top: 11rem;
+
 }

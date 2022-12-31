@@ -6,7 +6,7 @@ const { useEffect } = React
 import { ColorPalet } from "./color-palet.jsx";
 import { DynamicCmp } from "./dynamic-note.jsx";
 
-export function NotePreview({ note, onDeleteNote, saveNote, isDetailed }) {
+export function NotePreview({ note, onDeleteNote, saveNote, isDetailed, onClose }) {
     const [isPalletOpen, setIsPalletOpen] = useState(false)
     const navigate = useNavigate()
 
@@ -42,6 +42,7 @@ export function NotePreview({ note, onDeleteNote, saveNote, isDetailed }) {
                     palette
                 </span>
             </button>
+            <button className="btn btn-close" onClick={onClose}>Close</button>
         </div>
         {isPalletOpen && <ColorPalet onSetColor={onSetColor} />}
     </article >

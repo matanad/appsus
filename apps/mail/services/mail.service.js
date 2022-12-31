@@ -10,10 +10,13 @@ export const mailService = {
   get,
   remove,
   save,
-  setTrashOrDelete,
   getDate,
   getEmptyMail,
   getDefaultFilter,
+  deleteMail,
+  moveToTrash,
+  starredToggle,
+  setReadUnRead,
 
 }
 
@@ -27,14 +30,17 @@ function query(filterBy = getDefaultFilter()) {
         const regex = new RegExp(filterBy.txt, 'i')
         mails = mails.filter(mail => regex.test(mail.subject))
       }
-      if (filterBy.byIsRead) {
-        mails = mails.filter(mail => mail.isRead)
+      if (filterBy.isRead === 'read') {
+        mails = mails.filter(mail => mail.isRead === 'read')
       }
-      if (filterBy.byIsNotRead) {
-        mails = mails.filter(mail => !mail.isRead)
+      if (filterBy.isRead === 'unread') {
+        mails = mails.filter(mail => mail.isRead === 'unread')
       }
       if (filterBy.isTrash) {
         mails = mails.filter(mail => mail.isTrash)
+      }
+      if (filterBy.isStarred) {
+        mails = mails.filter(mail => mail.isStarred)
       }
       // if (filterBy.minYear) {
       //     mails = mails.filter(mail => filterBy.minYear >= utilService.getYearsDistance(mail.publishedDate))
@@ -52,7 +58,7 @@ function getEmptyMail(to = '', subject = '', body = '') {
     to: '',
     subject: '',
     body: '',
-    isRead: false,
+    isRead: 'unread',
     sentAt: Date.now(),
     from: 'Me',
     isTrash: false,
@@ -76,14 +82,32 @@ function getDate(timestamp) {
   return month + '/' + day + '/' + year;
 }
 
-function setTrashOrDelete(mail) {
-  if (!mail.removedAt) {
-    mail.isTrash = true
-    mail.removedAt = Date.now()
-    return save(mail)
-  } else {
-    return remove(mail.id)
+function deleteMail(mailId) {
+  return remove(mailId)
+}
+
+function moveToTrash(mail) {
+  mail.isTrash = true
+  mail.removedAt = Date.now()
+  return save(mail)
+}
+
+function setReadUnRead(mail) {
+  if (mail.isRead === 'read') {
+    mail.isRead = 'unread'
+  } else if (mail.isRead === 'unread') {
+    mail.isRead = 'read'
   }
+  return save(mail)
+}
+
+function starredToggle(mail) {
+  if (!mail.isStarred) {
+    mail.isStarred = true
+  } else {
+    mail.isStarred = false
+  }
+  return save(mail)
 }
 
 function _createMails() {
@@ -95,7 +119,7 @@ function _createMails() {
         fullName: 'Wix',
         subject: 'Miss you!',
         body: 'Would love to catch up sometimes',
-        isRead: false,
+        isRead: 'unread',
         sentAt: 1609459200,
         to: 'momo@momo.com',
         from: 'Wix',
@@ -108,7 +132,7 @@ function _createMails() {
         fullName: 'Dana',
         subject: 'Hi there',
         body: 'how are toy doing?',
-        isRead: false,
+        isRead: 'unread',
         sentAt: new Date(Date.now()),
         to: 'momo@momo.com',
         from: 'Dana',
@@ -121,7 +145,7 @@ function _createMails() {
         fullName: 'Matan',
         subject: 'fix the door',
         body: 'you need to fix it',
-        isRead: false,
+        isRead: 'unread',
         sentAt: 1672233833003,
         to: 'momo@momo.com',
         from: 'Matan',
@@ -134,7 +158,7 @@ function _createMails() {
         fullName: 'Sharon',
         subject: 'Importent subject',
         body: 'enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla ante, iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egesta',
-        isRead: false,
+        isRead: 'unread',
         sentAt: 1672233833003,
         to: 'momo@momo.com',
         from: 'Matan',

@@ -8,7 +8,7 @@
     box-shadow: #64798f1f 0px -1px 0px 0px inset;
     background-color: var(--gray1);
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 0.5fr 130px 700px 130px 0.5fr;
     text-align: center;
 }
 
@@ -33,7 +33,7 @@
     padding: 0 0.5rem;
 }
 
-.trash-btn{
+.td-btns{
     background-color: transparent;
     border: none;
     display: inline;
@@ -46,7 +46,21 @@
     color: var(--error);
 }
 
-.mail-list-item:hover .trash-btn{
+.mail-list-item:hover .td-btns{
+    opacity: 1;
+}
+
+.mail-date{
+    width: fit-content;
+    background-color: transparent;
+    border: none;
+    display: inline;
+    height: 100%;
+    opacity: 0;
+    transition: .3s;
+}
+
+.mail-list-item:hover .mail-date{
     opacity: 1;
 }
 

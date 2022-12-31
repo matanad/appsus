@@ -5,14 +5,24 @@
     transition: opacity .3s;
 }
 
-td.trash-td{
+td.trash-td {
     width: fit-content;
 }
 
-td.body-td{
-    width: 20vw;
+td.body-td {
+    text-align: left;
 }
 
-td.subject-td{
+td.subject-td {
     width: fit-content;
+}
+
+.is-starred {
+    color: rgb(172, 164, 16);
+    font-weight: 800;
+}
+
+
+.un-starred {
+    font-weight: 800;
 }

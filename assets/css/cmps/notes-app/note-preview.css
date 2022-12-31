@@ -210,4 +210,8 @@
     .note-list {
         columns: 1;
     }
+
+    .note{
+        width: 22rem;
+    }
 }

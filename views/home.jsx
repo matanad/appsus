@@ -4,13 +4,11 @@ export function Home() {
     return <section className="home home-page-container flex">
 
         <div className="home-page-img-container">
-            <h1>NoteSus</h1>
-            <img src="./assets/img/google-keep.png" alt="" />
+            <img src="./assets/img/notesus-main-logo.svg" alt="" />
         </div>
 
         <div className="home-page-img-container">     
-            <h1>MailSus</h1>
-            <img src="./assets/img/gmail.png" alt="" />
+            <img src="./assets/img/mailsus-main-logo.svg" alt="" />
         </div>
     </section>
 }

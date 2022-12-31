@@ -2,6 +2,7 @@ const { Link, useLocation } = ReactRouterDOM
 const { useState } = React
 
 import { MailFilter } from "../apps/mail/cmps/mail-filter.jsx"
+import { NoteSearch } from "../apps/note/cmps/note-search.jsx"
 import { AppsMenu } from "./apps-menu.jsx"
 
 export function AppHeader() {
@@ -22,6 +23,7 @@ export function AppHeader() {
             `} />
         </Link>
         {pathname.includes('/mail') && <MailFilter />}
+        {pathname.includes('/note') && <NoteSearch />}
         <nav className="apps-menu-btn">
             <span onClick={onOpenAppsMenu} className="material-symbols-outlined">
                 apps

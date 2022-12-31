@@ -5,6 +5,7 @@
     background-size: cover;
     height: 100%;
     width: 10rem;
+    /* display: none; */
 }
 
 .logo.note-logo{
@@ -15,4 +16,10 @@
 .logo.mail-logo{
     
     background-image: url("../../img/mail-logo.svg");
+}
+
+@media (max-width: 600px){
+    .logo{
+        display: none;
+    }
 }

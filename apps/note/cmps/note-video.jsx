@@ -10,7 +10,6 @@ export function NoteVideo({ note }) {
         const embad = 'embed'
         const videoID = youtubeParser(note.info.url)
         const url = `https://www.youtube.com/embed/${videoID}`
-        console.log('url:', url)
         return url
     }
 

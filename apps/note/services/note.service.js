@@ -7,7 +7,8 @@ export const noteService = {
     remove,
     save,
     getEmptyNote,
-    getEmptyTodo
+    getEmptyTodo,
+    getDefaultFilter
 }
 
 const STORAGE_KEY = 'noteDB'
@@ -17,9 +18,10 @@ const gNotes = [
         type: "note-txt",
         isPinned: true,
         color: '',
-        info: { 
+        info: {
             title: "Fullstack Me Baby!",
-            txt: "Oh yeahhhh!!!" }
+            txt: "Oh yeahhhh!!!"
+        }
     },
     {
         id: "n102",
@@ -64,8 +66,34 @@ const gNotes = [
 
 _createNotes()
 
-function query(filterBy = '') {
+function getDefaultFilter() {
+    return {
+        info: {
+            title: '',
+            url: '',
+            txt: '',
+            doneAt: null,
+        }
+    }
+}
+
+function query(filterBy = getDefaultFilter()) {
     return storageService.query(STORAGE_KEY)
+        .then(notes => {
+            if (filterBy.txt) notes = notes.filter(({ type, info }) => {
+                const regex = new RegExp(filterBy.txt, 'i')
+                if (type === 'note-txt') return regex.test(info.txt)
+                if (type === 'note-todos') {
+                    const todos = info.todos.filter(({txt}) => regex.test(txt))
+                    if (todos && todos.length) return true
+                }
+                return false
+            })
+            // if (filterBy.url) notes = notes.filter(({ info }) => info.url === filterBy.url)
+            // if (filterBy.title) notes = notes.filter(({ info }) => info.title === filterBy.title)
+            // if (filterBy.doneAt) notes = notes.filter(({ info }) => info.doneAt === filterBy.doneAt)
+            return notes
+        })
 }
 
 function get(noteId) {
@@ -102,6 +130,6 @@ function _loadNotesFromStorage() {
 
 function _createNotes() {
     const notes = _loadNotesFromStorage()
-        if (!notes || !notes.length) _saveNotesToStorage(gNotes)
-        else _saveNotesToStorage(notes)
+    if (!notes || !notes.length) _saveNotesToStorage(gNotes)
+    else _saveNotesToStorage(notes)
 }

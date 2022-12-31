@@ -29,6 +29,8 @@ nav a.active {
     border-radius: 8px;
     background-color: #fafafa;
     border-color: transparent;
+    position: relative;
+    width: 500px;
 }
 
 .main-search>* {
@@ -39,11 +41,25 @@ nav a.active {
     margin-inline-end: .5rem;
 }
 
+.main-search form {
+    width: 100%;
+}
+
+.main-search input {
+    padding-inline-start: 1em;
+}
+
 .main-search span {
     cursor: pointer;
 }
 
-.main-search:focus-within{
+.main-search select {
+    position: absolute;
+    top: 0px;
+    right: 0;
+}
+
+.main-search:focus-within {
     background-color: var(--main-bg-color);
     box-shadow: rgba(0, 0, 0, 0.14) 0px 4px 5px 0px, rgba(0, 0, 0, 0.12) 0px 1px 10px 0px, rgba(0, 0, 0, 0.2) 0px 2px 4px -1px;
 }
@@ -52,11 +68,26 @@ nav a.active {
     outline: none;
 }
 
-.apps-menu-btn{
+.apps-menu-btn {
     margin-inline-end: 2rem;
 }
 
-.apps-menu-btn span{
+.apps-menu-btn span {
     font-size: 2.5rem;
 }
 
+@media (max-width: 600px) {
+    .app-header {
+        gap: 1em;
+        padding-inline-start: .5em;
+    }
+
+    .note-top-filter {
+        flex-grow: 1;
+    }
+
+    .main-search {
+        width: 250px;
+        padding: 0;
+    }
+}

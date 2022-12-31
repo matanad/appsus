@@ -1,12 +1,12 @@
 const { useState, useEffect } = React
 const { useParams } = ReactRouterDOM
 
-import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 import { AddNote } from "../cmps/add-note.jsx"
 import { NoteList } from "../cmps/note-list.jsx"
 import { UserMsg } from "../../../cmps/user-msg.jsx"
 
 
+import { eventBusService, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 import { noteService } from "../services/note.service.js"
 import { NoteDetails } from "./note-details.jsx"
 
@@ -16,12 +16,12 @@ export function NoteIndex() {
 
     useEffect(() => {
         loadNotes()
+        eventBusService.on('loadNotes', loadNotes)
     }, [])
 
-    function loadNotes() {
-        noteService.query()
+    function loadNotes(filter) {
+        noteService.query(filter)
             .then((notes)=>{
-                console.log('notes:', notes)
                 setNotes(notes)}
                 )
             .catch(err => console.log('err:', err))

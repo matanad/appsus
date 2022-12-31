@@ -33,10 +33,10 @@ export function NoteTodos({ note, saveNote, isDetail = true }) {
         </header>
         {
             todos.map(((todo, idx) =>
-                <div className="todo">
+                <div className="todo" key={note.id + idx}>
                     <div className={`todo ${todo.doneAt && 'done'}`}
                         onClick={() => toggleIsDone(ev, idx)}
-                        key={note.id + idx}
+                        
                         contentEditable={isDetail}
                         suppressContentEditableWarning={true}
                         onInput={handleChange}
@@ -45,7 +45,7 @@ export function NoteTodos({ note, saveNote, isDetail = true }) {
 
                     </div>
                     {idx === todos.length - 1 && <button className="btn" onClick={() => setTodos([...todos, ''])}>
-                        <span contentEditable={false} class="material-symbols-outlined">
+                        <span contentEditable={false} className="material-symbols-outlined">
                             add
                         </span>
                     </button>}

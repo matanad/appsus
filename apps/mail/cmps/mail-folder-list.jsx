@@ -25,7 +25,6 @@ export function MailFolderList({mails}) {
     }
 
     return <section className="mail-folder-list">
-{/* /////////////////////////////////////////////////////// */}
         <NavLink to={'/mail/inbox'}>
                 <span className="material-symbols-outlined">
                     inbox

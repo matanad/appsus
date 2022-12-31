@@ -3,16 +3,16 @@ import { MailPreview } from "./mail-preview.jsx"
 export function MailList({ mails, onTrashClick, onStarClick, onEnvelopeClick }) {
 
     return <section className="mail-table-container ">
-        <table className="mail-table ">
-            <tbody className="">
+        <div className="mail-table ">
+            <div className="">
                 {
                     mails.map(mail =>
-                        <tr className={`mail-list-item ${(mail.isRead === 'read') && 'mail-is-read'}`} key={mail.id}>
+                        <div className={`mail-list-item ${(mail.isRead === 'read') && 'mail-is-read'}`} key={mail.id}>
                             <MailPreview mail={mail} onTrashClick={onTrashClick} onStarClick={onStarClick} onEnvelopeClick={onEnvelopeClick} />
-                        </tr>
+                        </div>
                     )
                 }
-            </tbody>
-        </table>
+            </div>
+        </div>
     </section>
 }

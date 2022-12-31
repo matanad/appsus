@@ -127,7 +127,7 @@ function _createMails() {
     mails = [
       {
         id: 'e101',
-        subject: 'Advertise your web',
+        subject: 'Web advertise',
         body: 'Just by having a site of your own, you can start earning passive income. There are just a handful of steps you’ll need to take to build a website that makes money online. First you’ll need to choose from one of many professionally designed website templates, select a domain name and get free website hosting. Then you can begin thinking about the different routes toward monetizing your website. ',
         sentAt: 1609459200,
         isRead: 'unread',
@@ -316,6 +316,9 @@ function save(mail) {
 }
 
 function saveComposeMail(mail){
+  if(mail.to === loggedinUser.mail){
+    
+  }
   let mailToSet = getEmptyMail()
   mailToSet.fullName = loggedinUser.fullname
   mailToSet.from = loggedinUser.mail

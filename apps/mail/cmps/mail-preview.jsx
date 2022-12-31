@@ -1,5 +1,4 @@
-const { useState, useEffect, useRef } = React
-const { Fragment } = React
+const { useState, Fragment } = React
 const { Link, useParams } = ReactRouterDOM
 //js
 import { mailService } from "../services/mail.service.js"
@@ -16,39 +15,46 @@ export function MailPreview({ mail, onTrashClick, onStarClick, onEnvelopeClick }
 
     return <Fragment>
 
-        <td>
+        <div>
             <button className="star-btn star-btn" onClick={() => { onStarClick(mail); setIsStarred(!isStarred) }}><span className={`star-span material-symbols-outlined ${star}`}>star</span></button><br />
-        </td>
+        </div>
 
         {/* FullName */}
-        <td>
+        <div>
             <Link to={`/mail/${folderName + '/' + mail.id}`}>
                 <h4>{mail.fullName}</h4>
             </Link>
-        </td>
+        </div>
 
         {/* Subject */}
-        <td className="subject-td">
+        <div className="subject-td">
             <Link to={`/mail/${folderName + '/' + mail.id}`}>
-                <h4>{mail.subject}</h4>
+                <p>
+                    <span >
+                        {mail.subject}
+                    </span>
+                    <span className="bodyssssss">
+                        <LongTxt txt={mail.body} length={200} />
+                        {/* {mail.body} */}
+                    </span>
+                </p>
             </Link>
-        </td>
+        </div>
 
-        {/* Body */}
+        {/* Body
         <td className="body-td">
             <Link to={`/mail/${folderName + '/' + mail.id}`}>
-                <LongTxt txt={mail.body} length={150} />
             </Link>
-        </td>
+        </td> */}
 
         {/* Trash btn */}
-        <td className="trash-td">
+        <div className="trash-td">
             <button className="td-btns trash-btn" onClick={() => onTrashClick(mail)}><span className="material-symbols-outlined">delete</span></button>
             <button className="envelope-btn td-btns " onClick={() => { onEnvelopeClick(mail); setEnvelope(!isEnvelope) }}><span className="material-symbols-outlined">{envelope}</span></button>
-        </td>
+        </div>
 
         {/* Date */}
-        <td className="mail-date"><Link to={`/mail/${folderName + '/' + mail.id}`}><h4>{mailService.getDate(mail.sentAt)}</h4></Link></td>
+        <div className="mail-date"><Link to={`/mail/${folderName + '/' + mail.id}`}><h4>{mailService.getDate(mail.sentAt)}</h4></Link></div>
 
         {/* {mail.isRead && <td><Link to={`/mail/${mail.id}`}><h4>Mail Read</h4></Link></td>}
         {!mail.isRead && <td><Link to={`/mail/${mail.id}`}><h4>Mail Unread</h4></Link></td>} */}

@@ -106,7 +106,9 @@ export function MailIndex() {
                     <span className="material-symbols-outlined">
                         edit
                     </span>
-                    Compose
+                    <div>
+                        Compose
+                    </div>
                 </div>
 
                 <MailSideFiler />

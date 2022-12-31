@@ -5,13 +5,20 @@
 }
 
 div .compose-btn {
-    background-color: var(--gray1);
+    background-color: whitesmoke;
     text-align: center;
     cursor: pointer;
     font-size: 1.2rem;
-    border-radius: 1rem;
-    padding: .5rem .25rem;
+    border-radius: 1em;
     margin-bottom: 1em;
+    margin-inline-start: 1rem;
+    display: flex;
+    gap: .5em;
+    align-items: center;
+    height: 3.5rem;
+}
+
+.compose-btn span{
     margin-inline-start: 1rem;
 }
 

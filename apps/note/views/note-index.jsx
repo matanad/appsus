@@ -17,7 +17,11 @@ export function NoteIndex() {
 
     function loadNotes() {
         noteService.query()
-            .then(setNotes)
+            .then((notes)=>{
+                console.log('notes:', notes)
+                setNotes(notes)}
+                )
+            .catch(err => console.log('err:', err))
     }
 
     function onDeleteNote({ currentTarget }, noteId) {

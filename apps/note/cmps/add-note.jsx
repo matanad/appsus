@@ -47,11 +47,11 @@ export function AddNote({ onAddNewNote }) {
                 getEmptyTodo={noteService.getEmptyTodo}
                 setNewNote={setNewNote}
             />}
-            {noteType === 'note-img' && <input
+            {(noteType === 'note-img' || noteType === 'note-video') && <input
                 onChange={handleChange}
                 name="url"
                 type="text"
-                placeholder="Enter a url..."
+                placeholder={`Enter a ${noteType === 'note-video' && 'youtube'} url...`}
             />}
             <button className="btn btn-submit">Submit</button>
             <button className="btn btn-todos" type="button" onClick={() => onNoteType('note-todos')}>
@@ -64,6 +64,12 @@ export function AddNote({ onAddNewNote }) {
                     image
                 </span>
             </button>
+            <button className="btn btn-video" type="button" onClick={() => onNoteType('note-video')}>
+                <span className="material-symbols-outlined">
+                    youtube_activity
+                </span>
+            </button>
         </form>
     </section>
+       
 }

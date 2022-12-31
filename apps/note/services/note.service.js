@@ -17,7 +17,9 @@ const gNotes = [
         type: "note-txt",
         isPinned: true,
         color: '',
-        info: { txt: "Fullstack Me Baby!" }
+        info: { 
+            title: "Fullstack Me Baby!",
+            txt: "Oh yeahhhh!!!" }
     },
     {
         id: "n102",
@@ -51,8 +53,8 @@ const gNotes = [
         type: "note-video",
         color: '',
         info: {
-            url: "",
-            title: "Let's Dance!"
+            url: "https://www.youtube.com/watch?v=PvDowVEX0kY&ab_channel=BoomShakaLaka",
+            title: "Let's party!"
         },
         style: {
             backgroundColor: "#00d"
@@ -95,12 +97,11 @@ function _saveNotesToStorage(notes) {
 }
 
 function _loadNotesFromStorage() {
-    return storageService.query(STORAGE_KEY)
+    return localStorageService.loadFromStorage(STORAGE_KEY)
 }
 
 function _createNotes() {
-    _loadNotesFromStorage().then(notes => {
+    const notes = _loadNotesFromStorage()
         if (!notes || !notes.length) _saveNotesToStorage(gNotes)
         else _saveNotesToStorage(notes)
-    })
 }

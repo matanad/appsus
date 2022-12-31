@@ -44,6 +44,7 @@ export function NoteIndex() {
         noteService.save(note)
             .then(() => {
                 isSuccMsgOn && showSuccessMsg('Note saved.')
+                console.log('note:', note)
                 loadNotes()
             })
             .catch(err => {

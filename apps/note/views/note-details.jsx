@@ -3,6 +3,7 @@ const { useParams, useNavigate } = ReactRouterDOM
 
 import { NotePreview } from "../cmps/note-preview.jsx"
 
+import { eventBusService, showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 import { noteService } from "../services/note.service.js"
 
 export function NoteDetails({ }) {
@@ -13,19 +14,52 @@ export function NoteDetails({ }) {
     useEffect(() => {
         noteService.get(noteId)
             .then(setNote)
+            .catch(onClose)
     }, [])
 
-    function onClose(){
+    function onClose() {
         setNote({})
         navigate('/note')
     }
 
-    return <div onClick={onClose} className="screen">
-        <div className={`note-details`}>
-            <div className="note-content">
-                <NotePreview note={note} />
+    function onSaveNote(note, isSuccMsgOn = true) {
+        console.log('saving:')
+        noteService.save(note)
+            .then(() => {
+                isSuccMsgOn && showSuccessMsg('Note saved.')
+                eventBusService.emit('loadNotes')
+                setNote(note)
+            })
+            .catch(err => {
+                showErrorMsg("Somthing went wrong")
+                console.log(`Save note failed. error: ${err} note: ${note}`)
+            })
+    }
 
-            <button className="btn" onClick={onClose}>Close</button>
+    function onDeleteNote({ currentTarget }, noteId) {
+        currentTarget.disabled = true
+        noteService.remove(noteId)
+            .then(() => {
+                showSuccessMsg('Note deleted.')
+                eventBusService.emit('loadNotes')
+                onClose()
+            })
+            .catch(err => {
+                showErrorMsg("Somthing went wrong")
+                console.log(`Save note failed. error: ${err} note: ${note}`)
+            })
+    }
+
+    return <div onClick={onClose} className="screen">
+        <div className="note-details">
+            <div className="note-content">
+                <NotePreview note={note}
+                 onDeleteNote={onDeleteNote}
+                  saveNote={onSaveNote}
+                   isDetailed={true} 
+                   />
+
+                <button className="btn btn-close" onClick={onClose}>Close</button>
             </div>
         </div>
     </div>

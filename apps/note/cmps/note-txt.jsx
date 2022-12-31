@@ -2,9 +2,9 @@ const { useRef, Fragment } = React
 
 import { utilService } from "../../../services/util.service.js"
 
-export function NoteTxt({ note, isDetail = true, saveNote }) {
+export function NoteTxt({ note, isDetailed = false, saveNote }) {
     const currNote = useRef(note)
-    const {txt, title} = note
+    const { txt, title } = note
     const changeDebounce = useRef(utilService.debounce(saveNote))
 
     function handleChange({ currentTarget, target }) {
@@ -17,10 +17,10 @@ export function NoteTxt({ note, isDetail = true, saveNote }) {
     // if (!isDetail) return <div>{note.info.txt}</div>
     return <Fragment>
         <div
-            className={`note-txt-title ${isDetail && 'editable'}`}
+            className={`note-txt-title ${isDetailed ? 'editable' : ''}`}
             role="textbox"
             multiline="true"
-            contentEditable={isDetail}
+            contentEditable={isDetailed}
             spellCheck="true"
             id="title"
             onInput={handleChange}
@@ -29,11 +29,11 @@ export function NoteTxt({ note, isDetail = true, saveNote }) {
             {note.info.title}
         </div>
         <div
-            className={isDetail && 'editable'}
+            className={isDetailed ? 'editable' : ''}
             // type='text'
             role="textbox"
             multiline="true"
-            contentEditable={isDetail}
+            contentEditable={isDetailed}
             spellCheck="true"
             id="txt"
             onInput={handleChange}

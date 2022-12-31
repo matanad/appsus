@@ -1,4 +1,4 @@
-.screen{
+.screen {
     width: 100vw;
     height: 100vh;
     background-color: rgba(32, 33, 36, 0.6);
@@ -6,12 +6,35 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    align-items: center;
-    z-index: 2;
+    z-index: 5001;
+    padding-top: 4em;
 }
 
-.screen .note {
-    margin-top: 10em;
-    width: 600px;
+.note-details .note {
+    align-items: stretch;
+    width: 80vw;
+    max-height: 80vh;
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
+}
+
+.note-details .note .btn-controls {
+    opacity: 1;
+}
+
+.note-details .note h1 {
+    font-size: 1.8rem;
+}
+
+.note-details .note .todo  {
+    font-size: 1.3rem;
+}
+
+.note-details .note .todo button{
+    font-size: 1.5em;
+}
+
+.note-details .btn-close{
+    position: absolute;
+    right: 3rem;
+    top: 11rem;
 }

@@ -1,38 +1,36 @@
 const { useState } = React
 const { useNavigate } = ReactRouterDOM
 
+const { useEffect } = React
+
 import { ColorPalet } from "./color-palet.jsx";
 import { DynamicCmp } from "./dynamic-note.jsx";
 
-export function NotePreview({ note, onDeleteNote, saveNote }) {
+export function NotePreview({ note, onDeleteNote, saveNote, isDetailed }) {
     const [isPalletOpen, setIsPalletOpen] = useState(false)
-    const [classColor, setClassColor] = useState(note.color)
     const navigate = useNavigate()
 
     function onSetColor(color) {
-
-        setClassColor(color)
         note.color = color
         saveNote(note)
     }
 
-    function getColorClass() {
-        return classColor
-    }
 
-    function onPalletClick(ev){
+    function onPalletClick(ev) {
         ev.stopPropagation()
         setIsPalletOpen(revValue => !revValue)
     }
 
-    function onNoteClick(noteId){
-
+    function onNoteClick(ev, noteId) {
+        ev.stopPropagation()
+        navigate(`/note/${noteId}`)
     }
 
-    return <article className={`note ${getColorClass()}`} onClick={((ev) => ev.stopPropagation())}>
+    return <article className={`note ${note.color}`} onClick={(ev) => onNoteClick(ev, note.id)}>
         <DynamicCmp note={note}
             type={note.type}
-            saveNote={saveNote} />
+            saveNote={saveNote}
+            isDetailed={isDetailed} />
         <div className="btn-controls">
             <button className="btn btn-delete" onClick={(ev) => onDeleteNote(ev, note.id)}>
                 <span className="material-symbols-outlined">

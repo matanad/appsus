@@ -4,31 +4,6 @@
     text-align: left;
 }
 
-.mail-list-item {
-    box-shadow: #64798f1f 0px -1px 0px 0px inset;
-    background-color: var(--gray1);
-    display: grid;
-    grid-template-columns: 3rem minmax(5rem, 10rem) minmax(3rem, 100%) minmax(auto, 5rem) minmax(auto, 8rem);
-    align-items: center;
-}
-
-.mail-list-item.mail-is-read{
-    background-color: rgba(168, 168, 168, 0.622);
-}
-
-.mail-list-item:hover{
-    box-shadow: inset 1px 1px 0 #231b1b83, inset -1px -1px 0 #231b1b83, 1px 1px 2px 0 #231b1b83, 0 1px 3px 1px #231b1b83;
-}
-
-/* .mail-list-item a{
-    margin: 0;
-    padding: 10px;
-} */
-/* .mail-list-item p{
-    margin: 0;
-    padding: 0 0.5rem;
-} */
-
 .td-btns{
     opacity: 0;
     transition: .3s;

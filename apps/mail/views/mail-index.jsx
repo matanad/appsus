@@ -106,7 +106,7 @@ export function MailIndex() {
                     <span className="material-symbols-outlined">
                         edit
                     </span>
-                    <div>
+                    <div className="compose">
                         Compose
                     </div>
                 </div>

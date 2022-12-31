@@ -53,7 +53,7 @@ export function MailPreview({ mail, onTrashClick, onStarClick, onEnvelopeClick }
         </div>
 
         {/* Date */}
-        <div className="mail-date"><Link to={`/mail/${folderName + '/' + mail.id}`}><h4>{mailService.getDate(mail.sentAt)}</h4></Link></div>
+        <div className="mail-date"><Link to={`/mail/${folderName + '/' + mail.id}`}><h4 className="date-h4">{mailService.getDate(mail.sentAt)}</h4></Link></div>
 
         {/* {mail.isRead && <td><Link to={`/mail/${mail.id}`}><h4>Mail Read</h4></Link></td>}
         {!mail.isRead && <td><Link to={`/mail/${mail.id}`}><h4>Mail Unread</h4></Link></td>} */}

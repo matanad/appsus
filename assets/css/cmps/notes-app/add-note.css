@@ -5,6 +5,7 @@
     margin: 1em auto;
     max-width: 598px;
     border-radius: 8px;
+    position: relative;
 }
 
 .add-note input{
@@ -17,9 +18,41 @@
     outline: none;
 }
 
+.adding-notes-btns-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+    bottom: 10%;
+}
+
+.adding-notes-btns-container>*{
+    border-radius: 50%;
+    padding: .5em;
+    transition: background-color .2s;
+}
+
+.adding-notes-btns-container .btn-submit{
+    /* padding-bottom: .3em; */
+    border-radius: 2em;
+}
+
+.adding-notes-btns-container>*:hover{
+    background-color: var(--gray1);
+}
+
 @media (max-width: 600px){
     .add-note{
-        /* margin: 0; */
+        min-height: 100px;
         max-width: 350px;
+    }
+
+    .adding-notes-btns-container{
+        /* flex-direction: column; */
+        max-width: 95px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        z-index: 5000;
     }
 }

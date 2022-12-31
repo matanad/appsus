@@ -53,23 +53,25 @@ export function AddNote({ onAddNewNote }) {
                 type="text"
                 placeholder={`Enter a ${noteType === 'note-video' && 'youtube'} url...`}
             />}
-            <button className="btn btn-submit">Submit</button>
-            <button className="btn btn-todos" type="button" onClick={() => onNoteType('note-todos')}>
-                <span className="material-symbols-outlined" onClick={() => onNoteType('note-todos')}>
-                    check_box
-                </span>
-            </button>
-            <button className="btn btn-img" type="button" onClick={() => onNoteType('note-img')}>
-                <span className="material-symbols-outlined">
-                    image
-                </span>
-            </button>
-            <button className="btn btn-video" type="button" onClick={() => onNoteType('note-video')}>
-                <span className="material-symbols-outlined">
-                    youtube_activity
-                </span>
-            </button>
+            <div className="adding-notes-btns-container">
+                <button className="btn btn-todos" type="button" onClick={() => onNoteType('note-todos')}>
+                    <span className="material-symbols-outlined" onClick={() => onNoteType('note-todos')}>
+                        check_box
+                    </span>
+                </button>
+                <button className="btn btn-img" type="button" onClick={() => onNoteType('note-img')}>
+                    <span className="material-symbols-outlined">
+                        image
+                    </span>
+                </button>
+                <button className="btn btn-video" type="button" onClick={() => onNoteType('note-video')}>
+                    <span className="material-symbols-outlined">
+                        youtube_activity
+                    </span>
+                </button>
+                <button className="btn btn-submit">Submit</button>
+            </div>
         </form>
     </section>
-       
+
 }

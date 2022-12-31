@@ -27,30 +27,33 @@ td.subject-td {
     font-weight: 800;
 }
 
-.subject-td p{
+.subject-prev-container {
     -webkit-font-smoothing: antialiased;
     letter-spacing: .2px;
     display: flex;
     flex: 1 1 auto;
     height: auto;
+    min-width: 0;
     padding: 0 0.625rem;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    max-width: max-content;
 }
 
-.bodyssssss {
+.subject-preview {
+    font-weight: 700;
+}
+
+.mail-body-preview {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     flex-basis: 0;
-    font-weight: 400;
     flex-grow: 1;
+    font-weight: 400;
     color: var(--ptxt2);
     font-size: 0.875rem;
     align-self: center;
     display: inline;
-    flex-shrink: 1;
-    margin-left: 10px;
+
 }

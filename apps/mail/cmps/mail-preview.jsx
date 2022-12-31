@@ -29,11 +29,11 @@ export function MailPreview({ mail, onTrashClick, onStarClick, onEnvelopeClick }
         {/* Subject */}
         <div className="subject-td">
             <Link to={`/mail/${folderName + '/' + mail.id}`}>
-                <p>
-                    <span >
+                <p className="subject-prev-container">
+                    <span className="subject-preview">
                         {mail.subject}
                     </span>
-                    <span className="bodyssssss">
+                    <span className="mail-body-preview">
                         <LongTxt txt={mail.body} length={200} />
                         {/* {mail.body} */}
                     </span>

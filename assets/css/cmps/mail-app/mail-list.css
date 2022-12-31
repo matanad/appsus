@@ -8,9 +8,8 @@
     box-shadow: #64798f1f 0px -1px 0px 0px inset;
     background-color: var(--gray1);
     display: grid;
-    /* grid-template-columns: 0.2fr 0.5fr 1fr 5fr 0.9fr 0.7fr; */
-    grid-template-columns: 1fr 3fr 6fr 2fr 2fr;
-    /* text-align: center; */
+    grid-template-columns: 3rem minmax(5rem, 10rem) minmax(3rem, 100%) minmax(auto, 5rem) minmax(auto, 8rem);
+    align-items: center;
 }
 
 .mail-list-item.mail-is-read{

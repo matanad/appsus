@@ -41,14 +41,15 @@ export function MailIndex() {
     function onMoveToTrash(mail) {
         mailService.setTrashOrDelete(mail)
             .then(() => {
-                let newFilter =  mailService.getDefaultFilter()
+                let newFilter = mailService.getDefaultFilter()
                 newFilter[folderName] = true
                 loadMails(newFilter)
                 showSuccessMsg('Deleted')
             })
-            .catch((err)=>{console.log('Delete mail failed error: ',err,'mail: ',mail)
-            showErrorMsg('Delete Failed')
-        })
+            .catch((err) => {
+                console.log('Delete mail failed error: ', err, 'mail: ', mail)
+                showErrorMsg('Delete Failed')
+            })
 
     }
 
@@ -64,7 +65,9 @@ export function MailIndex() {
                     <span className="material-symbols-outlined">
                         edit
                     </span>
-                    Compose
+                    <div>
+                        Compose
+                    </div>
                 </div>
 
                 <MailSideFiler />
@@ -78,7 +81,7 @@ export function MailIndex() {
         <section className="new-mail-container main-layout">
             {isComposeOpen && <MailCompose setIsComposeOpen={setIsComposeOpen} loadMails={loadMails} />}
         </section>
-        <UserMsg/>
+        <UserMsg />
     </main>
 }
 

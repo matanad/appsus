@@ -27,6 +27,9 @@ export function MailCompose({ setIsComposeOpen, loadMails }) {
 
             <header className="form-header flex">
                 <div>New Message</div>
+                <span onClick={()=>setIsComposeOpen()} className="material-symbols-outlined close-span">
+                    close
+                </span>
             </header>
 
             <input type="email"

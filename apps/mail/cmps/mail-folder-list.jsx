@@ -4,23 +4,37 @@ const { useNavigate, useParams, NavLink } = ReactRouterDOM
 import { mailService } from "../services/mail.service.js"
 import { eventBusService } from "../../../services/event-bus.service.js"
 
-export function MailFolderList() {
+export function MailFolderList({mails}) {
+    console.log('mails:', mails)
     const [filterByToEdit, setFilterByToEdit] = useState(mailService.getDefaultFilter())
     const prevFilterType = useRef('')
     const { folderName } = useParams()
 
     useEffect(() => {
-        // eventBusService.emit('loadMails', filterByToEdit)
+        eventBusService.emit('loadMails', filterByToEdit)
     }, [filterByToEdit])
 
-    return <section className="mail-folder-list">
+    function getUnreadMailsCount() {
+        let counter = 0
+        mails.forEach(mail => {
+            if (mail.isRead === 'unread') {
+                counter++
+            }
+        })
+        return counter
+    }
 
+    return <section className="mail-folder-list">
+{/* /////////////////////////////////////////////////////// */}
         <NavLink to={'/mail/inbox'}>
                 <span className="material-symbols-outlined">
                     inbox
                 </span>
             <div className="inbox">
-                Inbox
+                Inbox 
+            </div>
+            <div className="inbox-counter">
+                <span>{getUnreadMailsCount()}</span>
             </div>
         </NavLink>
 
@@ -43,7 +57,6 @@ export function MailFolderList() {
         </NavLink>
 
         <NavLink to={'/mail/isTrash'}>
-            {/* onClick={() => onFolderClick('isTrash')} className='trash' */}
                 <span className="material-symbols-outlined">
                     delete
                 </span>

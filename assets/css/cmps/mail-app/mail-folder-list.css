@@ -18,3 +18,8 @@
     background-color: var(--gray2-opacity);
     box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 1px inset;
 }
+
+.inbox-counter {
+    margin-left: 68px;
+    margin-bottom: 5px;
+}

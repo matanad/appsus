@@ -15,20 +15,36 @@ export function MailPreview({ mail, onTrashClick, onStarClick, onEnvelopeClick }
     const envelope = isEnvelope ? 'drafts' : 'mail'
 
     return <Fragment>
-        {/* From */}
-        <td><Link to={`/mail/${folderName + '/' + mail.id}`}><h4>{mail.fullName}</h4></Link></td>
+
+        <td>
+            <button className="star-btn star-btn" onClick={() => { onStarClick(mail); setIsStarred(!isStarred) }}><span className={`star-span material-symbols-outlined ${star}`}>star</span></button><br />
+        </td>
+
+        {/* FullName */}
+        <td>
+            <Link to={`/mail/${folderName + '/' + mail.id}`}>
+                <h4>{mail.fullName}</h4>
+            </Link>
+        </td>
 
         {/* Subject */}
-        <td className="subject-td"><Link to={`/mail/${folderName + '/' + mail.id}`}><h4>{mail.subject}</h4></Link></td>
+        <td className="subject-td">
+            <Link to={`/mail/${folderName + '/' + mail.id}`}>
+                <h4>{mail.subject}</h4>
+            </Link>
+        </td>
 
         {/* Body */}
-        <td className="body-td"><Link to={`/mail/${folderName + '/' + mail.id}`}><LongTxt txt={mail.body} length={100} /></Link></td>
+        <td className="body-td">
+            <Link to={`/mail/${folderName + '/' + mail.id}`}>
+                <LongTxt txt={mail.body} length={150} />
+            </Link>
+        </td>
 
         {/* Trash btn */}
         <td className="trash-td">
             <button className="td-btns trash-btn" onClick={() => onTrashClick(mail)}><span className="material-symbols-outlined">delete</span></button>
-            <button className="td-btns star-btn" onClick={() => { onStarClick(mail); setIsStarred(!isStarred) }}><span className={`material-symbols-outlined ${star}`}>star</span></button>
-            <button className="td-btns " onClick={() => { onEnvelopeClick(mail); setEnvelope(!isEnvelope) }}><span className="material-symbols-outlined">{envelope}</span></button>
+            <button className="envelope-btn td-btns " onClick={() => { onEnvelopeClick(mail); setEnvelope(!isEnvelope) }}><span className="material-symbols-outlined">{envelope}</span></button>
         </td>
 
         {/* Date */}

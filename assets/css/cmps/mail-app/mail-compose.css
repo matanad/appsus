@@ -14,11 +14,25 @@
 }
 
 .form-header{
-    padding: 10px 5px;
+    padding: 10px 10px;
     margin: 0;
-    font-size: large;
+    font-size: larger;
+    font-weight: 700;
     background-color: var(--gray2);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    justify-content: space-between;
 }
+
+.close-span{
+    cursor: pointer;
+}
+
+.close-span:hover{
+    color: rgb(157, 33, 33);
+}
+
+
 
 .mail-compose input{
     width: 100%;

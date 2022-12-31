@@ -1,0 +1,29 @@
+.mail-details-top {
+    width: 80vw;
+    justify-content: space-between;
+}
+
+.mail-details-center {
+    width: 80vw;
+    text-align: center;
+    margin: 4rem;
+    justify-content: center;
+}
+
+.mail-details-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    background-color: #cedded60;
+    padding: 20px;
+    border-radius: 34px;
+    justify-content: space-between;
+    height: 41vh;
+    align-content: space-between;
+}
+
+.mail-details-img {
+    height: 8rem;
+    border-radius: 99px;
+    background: #675e5ebd;
+}

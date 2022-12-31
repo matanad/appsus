@@ -4,11 +4,11 @@
     text-align: left;
 }
 
-.mail-list-item{
+.mail-list-item {
     box-shadow: #64798f1f 0px -1px 0px 0px inset;
     background-color: var(--gray1);
     display: grid;
-    grid-template-columns: 0.5fr 130px 700px 130px 0.5fr;
+    grid-template-columns: 0.2fr 0.5fr 1fr 5fr 0.9fr 0.7fr;
     text-align: center;
 }
 
@@ -34,16 +34,32 @@
 }
 
 .td-btns{
+    opacity: 0;
+    transition: .3s;
     background-color: transparent;
     border: none;
     display: inline;
     height: 100%;
-    opacity: 0;
-    transition: .3s;
+}
+
+.star-btn{
+    background-color: transparent;
+    border: none;
+    display: inline;
+    height: 100%;
+}
+
+.star-span:hover{
+    background-color: rgba(180, 183, 184, 0.535);
+    border-radius: 50px;
 }
 
 .trash-btn:hover{
     color: var(--error);
+}
+
+.envelope-btn:hover{
+    color: rgb(0, 176, 0);
 }
 
 .mail-list-item:hover .td-btns{

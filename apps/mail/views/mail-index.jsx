@@ -111,7 +111,7 @@ export function MailIndex() {
                     </div>
                 </div>
 
-                <MailSideFiler />
+                <MailSideFiler mails={mails}/>
             </section>
 
             <section className="main-mails-list-container">

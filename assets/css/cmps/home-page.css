@@ -1,0 +1,13 @@
+.home-page-img{
+    width: 20%;
+}
+
+.home-page-container{
+    /* height: 50vh; */
+    justify-content: space-around;
+    margin-top: 10rem;
+}
+
+.home-page-img-container h1{
+    text-align: center;
+}

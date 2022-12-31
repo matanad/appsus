@@ -7,13 +7,13 @@ import { AppsMenu } from "./apps-menu.jsx"
 export function AppHeader() {
     const { pathname } = useLocation()
 
-    const [isAppsMenuOpen, setIsAppsMenuOpen] = useState(true)
+    const [isAppsMenuOpen, setIsAppsMenuOpen] = useState(false)
 
     function onOpenAppsMenu() {
         setIsAppsMenuOpen((prev) => !prev)
     }
 
-    return <header className="app-header">
+    return <header className={`app-header`}>
         <Link to="/">
             <div
                 className={`

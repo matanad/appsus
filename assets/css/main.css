@@ -27,6 +27,7 @@
 
 /* Notes */
 
+@import './cmps/notes-app/note-details.css';
 @import './cmps/notes-app/note-preview.css';
 @import './cmps/notes-app/add-note.css';
 @import './cmps/notes-app/color-palet.css';

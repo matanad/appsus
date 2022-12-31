@@ -1,4 +1,5 @@
 const { useState, useEffect } = React
+const { useParams } = ReactRouterDOM
 
 import { showErrorMsg, showSuccessMsg } from "../../../services/event-bus.service.js"
 import { AddNote } from "../cmps/add-note.jsx"
@@ -7,9 +8,11 @@ import { UserMsg } from "../../../cmps/user-msg.jsx"
 
 
 import { noteService } from "../services/note.service.js"
+import { NoteDetails } from "./note-details.jsx"
 
 export function NoteIndex() {
     const [notes, setNotes] = useState([])
+    const {noteId} = useParams()
 
     useEffect(() => {
         loadNotes()
@@ -50,6 +53,7 @@ export function NoteIndex() {
     }
 
     return <div className="note-app">
+        {noteId && <NoteDetails/>}
         <header>
             <AddNote onAddNewNote={onSaveNote} />
         </header>

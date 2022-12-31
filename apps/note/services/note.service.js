@@ -17,7 +17,9 @@ const gNotes = [
         type: "note-txt",
         isPinned: true,
         color: '',
-        info: { txt: "Fullstack Me Baby!" }
+        info: { 
+            title: "Fullstack Me Baby!",
+            txt: "Oh yeahhhh!!!" }
     },
     {
         id: "n102",

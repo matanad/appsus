@@ -3,6 +3,11 @@ import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
 const MAIL_KEY = 'mailDB'
+
+const loggedinUser = {
+  mail: 'user@appsus.com',
+  fullname: 'Me'
+}
 _createMails()
 
 export const mailService = {
@@ -17,7 +22,7 @@ export const mailService = {
   moveToTrash,
   starredToggle,
   setReadUnRead,
-
+  saveComposeMail,
 }
 
 function query(filterBy = getDefaultFilter()) {
@@ -116,13 +121,13 @@ function _createMails() {
     mails = [
       {
         id: 'e101',
-        fullName: 'Wix',
         subject: 'Miss you!',
         body: 'Would love to catch up sometimes',
-        isRead: 'unread',
         sentAt: 1609459200,
-        to: 'momo@momo.com',
-        from: 'Wix',
+        isRead: 'unread',
+        to: loggedinUser.mail,
+        from: 'stam@mail.com',
+        fullName: 'Wix',
         isTrash: false,
         folder: ['new', 'important',],
         removedAt: null,
@@ -134,8 +139,8 @@ function _createMails() {
         body: 'how are toy doing?',
         isRead: 'unread',
         sentAt: new Date(Date.now()),
-        to: 'momo@momo.com',
-        from: 'Dana',
+        to: loggedinUser.mail,
+        from: 'aaaa@mail.com',
         isTrash: false,
         folder: ['new', 'important',],
         removedAt: null,
@@ -147,8 +152,8 @@ function _createMails() {
         body: 'you need to fix it',
         isRead: 'unread',
         sentAt: 1672233833003,
-        to: 'momo@momo.com',
-        from: 'Matan',
+        to: loggedinUser.mail,
+        from: 'vbbb@mail.com',
         isTrash: false,
         folder: ['new', 'important',],
         removedAt: null,
@@ -160,14 +165,26 @@ function _createMails() {
         body: 'enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla ante, iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egesta',
         isRead: 'unread',
         sentAt: 1672233833003,
-        to: 'momo@momo.com',
-        from: 'Matan',
+        to: loggedinUser.mail,
+        from: 'asdzxc@mail.com',
+        isTrash: false,
+        folder: ['new', 'important',],
+        removedAt: null,
+      },
+      {
+        id: 'e105',
+        fullName: 'Sharon',
+        subject: 'Importent subject',
+        body: 'enim. Etiam gravida molestie arcu. Sed eu nibh vulputate mauris sagittis placerat. Cras dictum ultricies ligula. Nullam enim. Sed nulla ante, iaculis nec, eleifend non, dapibus rutrum, justo. Praesent luctus. Curabitur egesta',
+        isRead: 'unread',
+        sentAt: 1682232833003,
+        to: loggedinUser.mail,
+        from: 'stam@mail.com',
         isTrash: false,
         folder: ['new', 'important',],
         removedAt: null,
       },
     ]
-
     utilService.saveToStorage(MAIL_KEY, mails)
   }
 }
@@ -186,6 +203,17 @@ function save(mail) {
   } else {
     return storageService.post(MAIL_KEY, mail)
   }
+}
+
+function saveComposeMail(mail){
+  let mailToSet = getEmptyMail()
+  mailToSet.fullName = loggedinUser.fullname
+  console.log('mailToSet:', mailToSet)
+  mailToSet.from = loggedinUser.mail
+  mailToSet.to = mail.to
+  mailToSet.subject = mail.subject
+  mailToSet.body = mail.body
+  return storageService.post(MAIL_KEY, mailToSet)
 }
 
 

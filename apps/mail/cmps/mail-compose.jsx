@@ -6,12 +6,14 @@ export function MailCompose({ setIsComposeOpen, loadMails }) {
 
     function handleChange({ target }) {
         let { value, name: field } = target
+        console.log('newMail:', newMail)
         setNewMail((prevMail) => ({ ...prevMail, [field]: value }))
+
     }
 
     function onAddMail(ev) {
         ev.preventDefault()
-        mailService.save(newMail).then((mail) => {
+        mailService.saveComposeMail(newMail).then((mail) => {
             setIsComposeOpen()
             loadMails()
             // showSuccessMsg('Mail sent')

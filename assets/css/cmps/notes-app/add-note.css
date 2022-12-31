@@ -16,3 +16,10 @@
 .add-note input:focus{
     outline: none;
 }
+
+@media (max-width: 600px){
+    .add-note{
+        /* margin: 0; */
+        max-width: 350px;
+    }
+}

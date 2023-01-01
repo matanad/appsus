@@ -23,6 +23,7 @@ export function NotePreview({ note, onDeleteNote, saveNote, isDetailed, onClose 
 
     function onNoteClick(ev, noteId) {
         ev.stopPropagation()
+        if(isDetailed) return
         navigate(`/note/${noteId}`)
     }
 

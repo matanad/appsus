@@ -1,13 +1,36 @@
-.home-page-img{
-    width: 20%;
-}
-
-.home-page-container{
-    /* height: 50vh; */
-    justify-content: space-around;
+.home-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin-top: 10rem;
+    height: 77vh;
 }
 
-.home-page-img-container h1{
+.logos-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.home-page-img-container h1 {
     text-align: center;
 }
+
+.logos-container {
+    display: flex;
+}
+
+.home-footer {
+    display: flex;
+    height: 56px;
+    width: 100%;
+    font-weight: 500;
+    background: rgb(222, 168, 67);
+    background: linear-gradient(90deg, rgba(222, 168, 67, 1) 0%, rgba(233, 13, 58, 1) 100%);
+    justify-content: space-around;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+/* .react-img{
+    width: 20%;
+} */

@@ -14,7 +14,7 @@
 .note-details .note {
     align-items: stretch;
     justify-content: space-between;
-    
+
     max-width: 80vw;
     min-width: 60vw;
     min-height: 60vh;
@@ -22,7 +22,7 @@
     box-shadow: 0 1px 2px 0 rgb(60 64 67 / 30%), 0 2px 6px 2px rgb(60 64 67 / 15%);
 }
 
-.note-details .note>*{
+.note-details .note>* {
     flex-basis: 10;
 }
 
@@ -34,15 +34,22 @@
     font-size: 1.8rem;
 }
 
-.note-details .note .todo  {
+.note-details .note .todo {
     font-size: 1.3rem;
 }
 
-.note-details .note .todo button{
+.note-details .note .todo button {
     font-size: 1.5em;
 }
 
-.note-details .btn-controls{
+.note-details .btn-controls {
     display: flex;
     flex-direction: row-reverse;
 }
+
+.note-details .note img {
+    width: max-content;
+    flex-basis: 20;
+}
+
+.note-details .note  {}

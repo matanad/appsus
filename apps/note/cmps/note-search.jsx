@@ -11,7 +11,9 @@ export function NoteSearch() {
         eventBusService.emit('loadNotes',filterByToEdit)
     }, [filterByToEdit])
 
-    function handleChange({ target }) {
+    function handleChange(ev) {
+        const {target} = ev
+        // target.preventdefault()
         let { value, name: field} = target
         setFilterByToEdit(prevFilter=>({...prevFilter,[field]:value}))
     }

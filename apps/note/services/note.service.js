@@ -17,16 +17,26 @@ const gNotes = [
         id: "n101",
         type: "note-txt",
         isPinned: true,
-        color: '',
+        color: 'yellow',
         info: {
             title: "Fullstack Me Baby!",
+            txt: "im vanilla"
+        }
+    },
+    {
+        id: "n105",
+        type: "note-txt",
+        isPinned: true,
+        color: '',
+        info: {
+            title: "Happy new year!! 🎉",
             txt: "Oh yeahhhh!!!"
         }
     },
     {
         id: "n102",
         type: "note-img",
-        color: '',
+        color: 'blue',
         info: {
             url: "https://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg",
             title: "Bobi and Me"
@@ -34,9 +44,19 @@ const gNotes = [
         style: { backgroundColor: "#00d" }
     },
     {
+        id: "n106",
+        type: "note-img",
+        color: '',
+        info: {
+            url: "https://tsh.io/wp-content/uploads/2019/12/react-meme1_.png",
+            title: ""
+        },
+        style: { backgroundColor: "#00d" }
+    },
+    {
         id: "n103",
         type: "note-todos",
-        color: '',
+        color: 'purple',
         info: {
             label: "Get my stuff together",
             todos: [{

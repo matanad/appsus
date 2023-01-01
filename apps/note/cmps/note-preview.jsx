@@ -43,7 +43,7 @@ export function NotePreview({ note, onDeleteNote, saveNote, isDetailed, onClose 
                     palette
                 </span>
             </button>
-            <button className="btn btn-close" onClick={onClose}>Close</button>
+            {isDetailed && <button className="btn btn-close" onClick={onClose}>Close</button>}
         </div>
         {isPalletOpen && <ColorPalet onSetColor={onSetColor} />}
     </article >
